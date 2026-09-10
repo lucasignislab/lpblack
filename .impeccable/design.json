@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-10T13:34:04Z",
+  "title": "Design System: Black Friday Ratoeira",
+  "extensions": {
+    "colorMeta": {
+      "brand-gold": { "role": "primary", "displayName": "Dourado de Conversão", "canonical": "#ffb800", "tonalRamp": ["oklch(15% 0.045 84)", "oklch(27% 0.081 84)", "oklch(39% 0.117 84)", "oklch(51% 0.153 84)", "oklch(63% 0.189 84)", "oklch(75% 0.225 84)", "oklch(87% 0.135 84)", "oklch(95% 0.055 84)"] },
+      "brand-gold-hover": { "role": "primary", "displayName": "Dourado Ativo", "canonical": "#ffc129", "tonalRamp": ["oklch(15% 0.04 84)", "oklch(27% 0.075 84)", "oklch(39% 0.11 84)", "oklch(51% 0.145 84)", "oklch(63% 0.18 84)", "oklch(75% 0.215 84)", "oklch(87% 0.13 84)", "oklch(95% 0.05 84)"] },
+      "brand-orange": { "role": "secondary", "displayName": "Laranja Ratoeira", "canonical": "#ff7e4a", "tonalRamp": ["oklch(15% 0.04 43)", "oklch(27% 0.075 43)", "oklch(39% 0.11 43)", "oklch(51% 0.145 43)", "oklch(63% 0.18 43)", "oklch(75% 0.19 43)", "oklch(87% 0.11 43)", "oklch(95% 0.045 43)"] },
+      "performance-orange": { "role": "secondary", "displayName": "Laranja de Performance", "canonical": "#d95700", "tonalRamp": ["oklch(15% 0.045 43)", "oklch(27% 0.085 43)", "oklch(39% 0.125 43)", "oklch(51% 0.165 43)", "oklch(63% 0.19 43)", "oklch(75% 0.16 43)", "oklch(87% 0.09 43)", "oklch(95% 0.04 43)"] },
+      "ink": { "role": "neutral", "displayName": "Tinta Profunda", "canonical": "#0a0a0a", "tonalRamp": ["#0a0a0a", "#252525", "#414141", "#5e5e5e", "#7c7c7c", "#9b9b9b", "#c9c9c9", "#f2f2f2"] },
+      "cream": { "role": "neutral", "displayName": "Creme de Campanha", "canonical": "#fff8ee", "tonalRamp": ["#2a251e", "#4b4235", "#70624e", "#97856b", "#bda98d", "#dccab0", "#f2e4d1", "#fff8ee"] },
+      "white": { "role": "neutral", "displayName": "Branco de Superfície", "canonical": "#ffffff", "tonalRamp": ["#262626", "#454545", "#666666", "#888888", "#aaaaaa", "#cccccc", "#e8e8e8", "#ffffff"] },
+      "surface-alt": { "role": "neutral", "displayName": "Cinza de Seção", "canonical": "#f7f8fa", "tonalRamp": ["#242526", "#424345", "#626366", "#838487", "#a5a6a9", "#c7c8ca", "#e3e4e6", "#f7f8fa"] },
+      "field-surface": { "role": "neutral", "displayName": "Cinza de Campo", "canonical": "#f8fafc", "tonalRamp": ["#242627", "#424547", "#626568", "#83878a", "#a5a9ac", "#c8cbce", "#e4e7e9", "#f8fafc"] },
+      "line": { "role": "neutral", "displayName": "Linha Suave", "canonical": "#e5e7eb", "tonalRamp": ["#222324", "#3f4042", "#5d5f61", "#7d7f82", "#9ea0a4", "#bec1c5", "#d8dade", "#f2f3f5"] },
+      "muted": { "role": "neutral", "displayName": "Texto Secundário", "canonical": "#667085", "tonalRamp": ["#17191e", "#2b3039", "#404856", "#566173", "#6e7a8f", "#8e98a9", "#b7bdc8", "#eceef2"] },
+      "field-label": { "role": "neutral", "displayName": "Rótulo de Campo", "canonical": "#596273", "tonalRamp": ["#15171b", "#292d34", "#3d434e", "#535a68", "#6a7281", "#8b929e", "#b4b9c1", "#ebedf0"] },
+      "dark-section": { "role": "neutral", "displayName": "Preto Editorial", "canonical": "#080808", "tonalRamp": ["#080808", "#222222", "#3d3d3d", "#595959", "#767676", "#969696", "#c5c5c5", "#f1f1f1"] },
+      "dark-card": { "role": "neutral", "displayName": "Cartão Noturno", "canonical": "#121212", "tonalRamp": ["#121212", "#2b2b2b", "#464646", "#626262", "#7f7f7f", "#9e9e9e", "#cccccc", "#f3f3f3"] },
+      "dark-border": { "role": "neutral", "displayName": "Borda Noturna", "canonical": "#2f2f2f", "tonalRamp": ["#151515", "#2f2f2f", "#4a4a4a", "#666666", "#838383", "#a2a2a2", "#cecece", "#f4f4f4"] },
+      "dark-copy": { "role": "neutral", "displayName": "Texto Noturno", "canonical": "#c7c7cc", "tonalRamp": ["#202021", "#3a3a3c", "#555557", "#717174", "#8e8e92", "#ababaf", "#c7c7cc", "#f0f0f2"] },
+      "dark-muted": { "role": "neutral", "displayName": "Texto Noturno Suave", "canonical": "#94949c", "tonalRamp": ["#1b1b1d", "#343437", "#4e4e53", "#69696f", "#85858d", "#a1a1a9", "#c9c9ce", "#f1f1f3"] },
+      "badge-copy": { "role": "secondary", "displayName": "Terracota de Selo", "canonical": "#a94210", "tonalRamp": ["oklch(15% 0.035 42)", "oklch(27% 0.07 42)", "oklch(39% 0.105 42)", "oklch(51% 0.14 42)", "oklch(63% 0.16 42)", "oklch(75% 0.13 42)", "oklch(87% 0.075 42)", "oklch(95% 0.035 42)"] },
+      "badge-border": { "role": "secondary", "displayName": "Pêssego de Borda", "canonical": "#ffe1b0", "tonalRamp": ["oklch(15% 0.025 75)", "oklch(27% 0.045 75)", "oklch(39% 0.065 75)", "oklch(51% 0.085 75)", "oklch(63% 0.105 75)", "oklch(75% 0.09 75)", "oklch(87% 0.06 75)", "oklch(95% 0.03 75)"] },
+      "error": { "role": "error", "displayName": "Erro Funcional", "canonical": "#d92d20", "tonalRamp": ["oklch(15% 0.04 29)", "oklch(27% 0.08 29)", "oklch(39% 0.12 29)", "oklch(51% 0.16 29)", "oklch(63% 0.19 29)", "oklch(75% 0.145 29)", "oklch(87% 0.08 29)", "oklch(95% 0.035 29)"] },
+      "error-copy": { "role": "error", "displayName": "Texto de Erro", "canonical": "#b42318", "tonalRamp": ["oklch(15% 0.04 29)", "oklch(27% 0.08 29)", "oklch(39% 0.12 29)", "oklch(51% 0.16 29)", "oklch(63% 0.175 29)", "oklch(75% 0.13 29)", "oklch(87% 0.075 29)", "oklch(95% 0.03 29)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Argumento principal do hero." },
+      "headline-form": { "displayName": "Headline Form", "purpose": "Título do cartão de captação." },
+      "headline-proof": { "displayName": "Headline Proof", "purpose": "Título da seção editorial escura." },
+      "lead": { "displayName": "Lead", "purpose": "Ênfase curta e CTAs." },
+      "button-label": { "displayName": "Button Label", "purpose": "Ações primárias e envio do formulário." },
+      "body": { "displayName": "Body", "purpose": "Descrições e conteúdo de apoio." },
+      "label": { "displayName": "Label", "purpose": "Rótulos compactos de formulário." }
+    },
+    "shadows": [
+      { "name": "card-conversion", "value": "0 18px 48px rgba(255, 126, 74, 0.16), 0 6px 20px rgba(10, 10, 10, 0.06)", "purpose": "Elevação composta do formulário e da confirmação." },
+      { "name": "button-warm", "value": "0 10px 26px rgba(255, 151, 24, 0.28)", "purpose": "Glow de repouso do CTA dourado." },
+      { "name": "button-warm-hover", "value": "0 14px 32px rgba(255, 151, 24, 0.36)", "purpose": "Resposta elevada do CTA dourado." },
+      { "name": "video-frame", "value": "0 20px 50px rgba(10, 10, 10, 0.16)", "purpose": "Separa mídia escura do hero claro." },
+      { "name": "mobile-action", "value": "0 12px 34px rgba(10, 10, 10, 0.28)", "purpose": "Destaca o CTA fixo do conteúdo rolável." }
+    ],
+    "motion": [
+      { "name": "control-state", "value": "180ms ease", "purpose": "Transformação, sombra e cor dos botões; opacidade e translação do CTA móvel." },
+      { "name": "field-state", "value": "160ms ease", "purpose": "Borda, halo e fundo dos campos." },
+      { "name": "loader-spin", "value": "700ms linear infinite", "purpose": "Spinner do envio enquanto o formulário está ocupado." },
+      { "name": "sticky-hidden", "value": "translateY(18px)", "purpose": "Retirada discreta do CTA móvel quando outra ação está visível." },
+      { "name": "reduced-motion", "value": "prefers-reduced-motion: reduce", "purpose": "Desativa smooth scroll, transições de ação e rotação do loader." }
+    ],
+    "breakpoints": [
+      { "name": "compact-desktop", "value": "960px" },
+      { "name": "mobile", "value": "760px" },
+      { "name": "small-phone", "value": "420px" },
+      { "name": "wide-desktop", "value": "1680px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Campaign Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA dourado para iniciar o fluxo de cadastro.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Quero a oferta da Black Friday</a>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:0 28px; border:0; border-radius:var(--radius-md, 16px); background:var(--brand-gold, #ffb800); color:var(--ink, #0a0a0a); box-shadow:var(--shadow-button, 0 10px 26px rgba(255,151,24,.28)); font-family:\"Inter Local\", Inter, sans-serif; font-weight:800; line-height:1.2; text-align:center; text-decoration:none; cursor:pointer; transition:transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease; } .ds-btn-primary:hover { background:#ffc129; box-shadow:0 14px 32px rgba(255,151,24,.36); transform:translateY(-2px); } .ds-btn-primary:focus-visible { outline:3px solid rgba(255,126,74,.52); outline-offset:4px; } .ds-btn-primary:active { transform:translateY(0); }"
+    },
+    {
+      "name": "Submit Button",
+      "kind": "button",
+      "refersTo": "button-submit",
+      "description": "Ação final de largura total para enviar o lead.",
+      "html": "<button class=\"ds-btn-submit\" type=\"button\">Garantir acesso à oferta</button>",
+      "css": ".ds-btn-submit { display:inline-flex; align-items:center; justify-content:center; width:100%; min-height:54px; border:0; border-radius:var(--radius-md, 16px); background:linear-gradient(100deg, #ee5f00, #e79a00); color:#fff; box-shadow:0 10px 22px rgba(255,126,38,.25); font-family:\"Inter Local\", Inter, sans-serif; font-weight:800; line-height:1.2; cursor:pointer; transition:transform 180ms ease, box-shadow 180ms ease; } .ds-btn-submit:hover { box-shadow:0 14px 28px rgba(255,126,38,.34); transform:translateY(-2px); } .ds-btn-submit:focus-visible { outline:3px solid rgba(255,126,74,.52); outline-offset:4px; } .ds-btn-submit:active { transform:translateY(0); } .ds-btn-submit:disabled { cursor:wait; opacity:.68; transform:none; }"
+    },
+    {
+      "name": "Campaign Badge",
+      "kind": "chip",
+      "refersTo": "campaign-badge",
+      "description": "Selo de contexto para condição de campanha e exclusividade do formulário.",
+      "html": "<p class=\"ds-campaign-badge\"><span aria-hidden=\"true\"></span>Black Friday · condição exclusiva por tempo limitado</p>",
+      "css": ".ds-campaign-badge { display:inline-flex; align-items:center; gap:9px; width:fit-content; margin:0; padding:9px 15px; border:1px solid #ffe1b0; border-radius:999px; background:rgba(255,249,239,.92); color:#a94210; font-family:\"Inter Local\", Inter, sans-serif; font-size:.8125rem; font-weight:700; line-height:1.25; } .ds-campaign-badge > span { width:9px; height:9px; flex:0 0 auto; border-radius:50%; background:var(--brand-gold, #ffb800); box-shadow:0 0 0 5px rgba(255,184,0,.1); } .ds-campaign-badge:focus-within { outline:3px solid rgba(255,126,74,.52); outline-offset:4px; } @media (max-width:420px) { .ds-campaign-badge { align-items:flex-start; border-radius:var(--radius-sm, 12px); } .ds-campaign-badge > span { margin-top:3px; } }"
+    },
+    {
+      "name": "Lead Input",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Campo compacto para dados de qualificação do lead.",
+      "html": "<label class=\"ds-field\"><span>E-MAIL PROFISSIONAL</span><input type=\"email\" placeholder=\"voce@empresa.com\" /></label>",
+      "css": ".ds-field { display:grid; gap:8px; color:#596273; font-family:\"Inter Local\", Inter, sans-serif; font-size:.75rem; font-weight:800; letter-spacing:.035em; } .ds-field > span { text-transform:uppercase; } .ds-field input { width:100%; height:52px; padding:0 16px; border:1px solid var(--line, #e5e7eb); border-radius:var(--radius-sm, 12px); outline:0; background:#f8fafc; color:var(--ink, #0a0a0a); font:inherit; font-size:1rem; font-weight:400; letter-spacing:normal; transition:border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease; } .ds-field input::placeholder { color:#586274; } .ds-field input:hover { border-color:#cfd4dc; background:#fff; } .ds-field input:focus { border-color:var(--brand-orange, #ff7e4a); background:#fff; box-shadow:0 0 0 4px rgba(255,126,74,.14); } .ds-field input[aria-invalid=\"true\"] { border-color:#d92d20; box-shadow:0 0 0 4px rgba(217,45,32,.1); }"
+    },
+    {
+      "name": "Form Card",
+      "kind": "card",
+      "description": "Superfície protagonista que concentra o fluxo de captação.",
+      "html": "<section class=\"ds-form-card\"><p>A condição da Black Friday é liberada apenas para quem se cadastrar</p><h2>Acesse a oferta da Black Friday</h2><small>Leva menos de um minuto.</small></section>",
+      "css": ".ds-form-card { width:min(100%, 672px); padding:clamp(30px, 4vw, 52px); border:2px solid transparent; border-radius:var(--radius-lg, 24px); background:linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, var(--brand-gold,#ffb800), var(--brand-orange,#ff7e4a)) border-box; box-shadow:var(--shadow-card, 0 18px 48px rgba(255,126,74,.16), 0 6px 20px rgba(10,10,10,.06)); color:var(--ink,#0a0a0a); font-family:\"Inter Local\", Inter, sans-serif; } .ds-form-card h2 { margin:26px 0 10px; font-size:clamp(2rem,3.1vw,2.5rem); font-weight:900; line-height:1.12; letter-spacing:-.035em; } .ds-form-card p { width:fit-content; margin:0; padding:10px 16px; border:1px solid #ffe1b0; border-radius:999px; background:rgba(255,249,239,.92); color:#a94210; font-size:.8125rem; font-weight:700; } .ds-form-card small { color:var(--muted,#667085); font-size:1rem; } .ds-form-card:focus-within { box-shadow:0 0 0 4px rgba(255,126,74,.14), var(--shadow-card, 0 18px 48px rgba(255,126,74,.16), 0 6px 20px rgba(10,10,10,.06)); }"
+    },
+    {
+      "name": "Video Placeholder",
+      "kind": "custom",
+      "description": "Moldura vertical de campanha antes da entrada do vídeo aprovado.",
+      "html": "<div class=\"ds-video-card\"><span class=\"ds-play\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M9 7.6v8.8L16 12 9 7.6Z\" fill=\"currentColor\" /></svg></span><strong>Vídeo em breve</strong><small>Espaço reservado para o vídeo da campanha</small></div>",
+      "css": ".ds-video-card { display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; width:min(100%,408px); aspect-ratio:9/15.4; max-height:530px; border-radius:var(--radius-lg,24px); background-color:#060606; background-image:radial-gradient(circle, rgba(255,255,255,.22) 1px, transparent 1.1px); background-size:38px 38px; color:#fff; box-shadow:0 20px 50px rgba(10,10,10,.16); font-family:\"Inter Local\", Inter, sans-serif; text-align:center; } .ds-play { display:grid; width:68px; height:68px; margin-bottom:20px; border-radius:50%; background:linear-gradient(135deg,var(--brand-orange,#ff7e4a),var(--brand-gold,#ffb800)); box-shadow:0 10px 28px rgba(255,126,74,.38); place-items:center; } .ds-play svg { width:30px; height:30px; } .ds-video-card strong { margin-bottom:9px; font-size:1.125rem; } .ds-video-card small { max-width:24ch; color:#a2a7b0; font-size:.875rem; line-height:1.55; } .ds-video-card:focus-visible { outline:3px solid rgba(255,126,74,.52); outline-offset:4px; }"
+    },
+    {
+      "name": "Testimonial Card",
+      "kind": "card",
+      "refersTo": "testimonial-card",
+      "description": "Cartão editorial escuro para prova social aprovada.",
+      "html": "<article class=\"ds-testimonial-card\"><blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote><div class=\"ds-stars\" aria-label=\"Avaliação de cinco estrelas\">★★★★★</div><strong>[Nome do cliente]</strong><small>[Cargo / Empresa]</small></article>",
+      "css": ".ds-testimonial-card { min-height:210px; padding:26px; border:1px solid #2f2f2f; border-radius:var(--radius-md,16px); background:#121212; color:#c7c7cc; font-family:\"Inter Local\", Inter, sans-serif; } .ds-testimonial-card blockquote { min-height:68px; margin:0 0 20px; font-size:.9375rem; line-height:1.55; } .ds-stars { margin:0 0 18px; color:var(--brand-gold,#ffb800); font-size:16px; letter-spacing:4px; } .ds-testimonial-card strong, .ds-testimonial-card small { display:block; font-size:.8125rem; } .ds-testimonial-card strong { color:#fff; font-weight:800; } .ds-testimonial-card small { margin-top:7px; color:#94949c; } .ds-testimonial-card:focus-within { border-color:var(--brand-gold,#ffb800); }"
+    },
+    {
+      "name": "Mobile Sticky CTA",
+      "kind": "nav",
+      "description": "Ação persistente de mobile, exibida somente fora do hero e do formulário.",
+      "html": "<a class=\"ds-mobile-cta\" href=\"#\">Quero a oferta</a>",
+      "css": ".ds-mobile-cta { display:flex; align-items:center; justify-content:center; min-height:52px; padding:0 20px; border-radius:var(--radius-md,16px); background:var(--brand-gold,#ffb800); color:var(--ink,#0a0a0a); box-shadow:0 12px 34px rgba(10,10,10,.28); font-family:\"Inter Local\", Inter, sans-serif; font-weight:900; text-decoration:none; transition:opacity 180ms ease, transform 180ms ease; } .ds-mobile-cta:hover { background:#ffc129; transform:translateY(-2px); } .ds-mobile-cta:focus-visible { outline:3px solid rgba(255,126,74,.52); outline-offset:4px; } .ds-mobile-cta:active { transform:translateY(0); } .ds-mobile-cta.is-hidden { opacity:0; pointer-events:none; transform:translateY(18px); } @media (prefers-reduced-motion:reduce) { .ds-mobile-cta { transition:none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Dado Real, Decisão Clara",
+    "overview": "O sistema visual transforma a promessa de performance em uma jornada direta e legível. Creme quente pontilhado, preto profundo, dourado e laranja criam um contraste de campanha sem recorrer à estética genérica de contagem regressiva; a hierarquia pesada conduz do argumento ao cadastro e então à prova social.\n\nA composição combina impacto e confiança: o primeiro viewport é contido e assimétrico, o formulário ocupa uma superfície branca suavemente elevada e a validação social migra para uma faixa escura. Controles compactos, cantos generosos e estados de interação explícitos mantêm a experiência acolhedora e operacional.",
+    "keyCharacteristics": [
+      "Contraste quente entre creme, preto, dourado e laranja.",
+      "Tipografia Inter pesada, compacta e orientada à conversão.",
+      "Pontilhado, auras difusas e gradientes restritos aos momentos de campanha.",
+      "Uma coluna de ação clara no mobile, com CTA persistente fora das zonas de conversão.",
+      "Superfícies arredondadas e elevadas sem perder a leitura direta."
+    ],
+    "rules": [
+      { "name": "The Conversion Color Rule", "body": "Dourado chama para a ação; laranja enfatiza, cria foco e costura gradientes. Não inverter esses papéis em fluxos primários.", "section": "colors" },
+      { "name": "The Contrast Chapter Rule", "body": "Creme apresenta a promessa, branco recebe os dados e preto enquadra a prova social.", "section": "colors" },
+      { "name": "The Heavy Headline Rule", "body": "Títulos usam peso máximo e tracking negativo; parágrafos recuperam espaço com peso regular e entrelinha aberta.", "section": "typography" },
+      { "name": "The Contained Campaign Rule", "body": "A página pode ocupar telas grandes, mas o conteúdo nunca se espalha além do contêiner e da largura de leitura estabelecidos.", "section": "layout" },
+      { "name": "The Purposeful Lift Rule", "body": "Sombra só acompanha conversão, mídia ou uma ação persistente; cartões editoriais usam borda e contraste tonal.", "section": "elevation" },
+      { "name": "The Three-Radius Rule", "body": "Use 12px para campos, 16px para ações e cartões compactos, e 24px para contêineres protagonistas.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do preserve o percurso cromático creme → branco → preto para promessa, ação e prova.",
+      "Do mantenha o dourado como voz principal de conversão e o laranja como ênfase e estado.",
+      "Do use Inter Local, títulos em 800–900 e corpo regular com largura de leitura controlada.",
+      "Do mantenha foco visível, alvos com pelo menos 52px e comportamento reduzido quando `prefers-reduced-motion` estiver ativo.",
+      "Do transforme grades em fluxo de uma coluna e depoimentos em trilha com snap até 760px."
+    ],
+    "donts": [
+      "Don't introduza contadores, preços, descontos ou urgência visual que não tenham conteúdo aprovado.",
+      "Don't espalhe gradientes por texto ou superfícies neutras; reserve-os para bordas, ação de envio, play e auras.",
+      "Don't use sombra em cartões editoriais quando borda e contraste tonal já estruturam a seção.",
+      "Don't deixe pílulas longas comprimirem em telefones estreitos; use o raio de 12px abaixo de 420px.",
+      "Don't crie movimento indispensável: o sistema deve permanecer completo com transições e spinner desativados."
+    ]
+  }
+}

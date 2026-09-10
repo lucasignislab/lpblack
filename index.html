@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff7ed" />
+    <meta name="description" content="Cadastre-se para receber a condição de Black Friday da Ratoeira para Ads, Pages e Hub." />
+    <meta property="og:title" content="Black Friday Ratoeira" />
+    <meta property="og:description" content="Sua próxima decisão de mídia começa com dados reais." />
+    <meta property="og:type" content="website" />
+    <title>Black Friday Ratoeira | Dados reais para sua operação</title>
+    <link rel="icon" href="assets/ratoeira-mark.png" />
+    <link rel="preload" href="assets/ratoeira-mark.png" as="image" />
+    <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body id="top">
+    <!--
+      THESIS: A campanha transforma dado real em decisão clara, sem reproduzir a landing page genérica de contagem regressiva e desconto inventado.
+      OWN-WORLD: Creme pontilhado, preto profundo, dourado e laranja; tipografia sans pesada, superfícies brancas suaves e controles compactos.
+      STORY: O visitante entende a oferta, identifica Ads/Pages/Hub, cadastra seu interesse e encontra prova social editorial para futura validação.
+      FIRST VIEWPORT: Logo e argumento à esquerda, vídeo vertical à direita e CTA visível sem rolagem; largura contida para monitores grandes.
+      FORM: Página de captação direta, primeira estrutura derivada do screenshot aprovado; seed key: supplied-current-page-recreation.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <svg class="icon-defs" aria-hidden="true">
+      <symbol id="star-icon" viewBox="0 0 24 24">
+        <path d="m12 2.6 2.83 5.74 6.34.92-4.59 4.47 1.08 6.31L12 17.06l-5.66 2.98 1.08-6.31-4.59-4.47 6.34-.92L12 2.6Z" />
+      </symbol>
+    </svg>
+    <a class="skip-link" href="#oferta">Ir para o formulário</a>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <a class="brand" href="#top" aria-label="Ratoeira — início">
+              <img src="assets/ratoeira-mark.png" width="660" height="467" alt="" />
+              <span>RATOEIRA</span>
+            </a>
+
+            <p class="campaign-badge">
+              <span aria-hidden="true"></span>
+              Black Friday · condição exclusiva por tempo limitado
+            </p>
+
+            <h1 id="hero-title">Sua próxima decisão de mídia começa com <em>dados reais.</em></h1>
+            <p class="hero__lead">Entre na Black Friday da Ratoeira.</p>
+            <p class="hero__description">Receba a condição promocional para tracking, páginas rápidas e um ecossistema feito para performance.</p>
+            <a class="button button--primary" href="#oferta" data-track="hero-cta">Quero a oferta da Black Friday</a>
+          </div>
+
+          <div class="video-card" aria-label="Espaço reservado para o vídeo da campanha">
+            <div class="video-card__pattern" aria-hidden="true"></div>
+            <div class="video-card__content">
+              <span class="play-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 7.6v8.8L16 12 9 7.6Z" fill="currentColor" /></svg>
+              </span>
+              <strong>Vídeo em breve</strong>
+              <span>Espaço reservado para o vídeo<br />da campanha</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer" id="oferta" aria-labelledby="offer-title">
+        <div class="offer__aura" aria-hidden="true"></div>
+        <div class="form-card">
+          <p class="form-card__badge">A condição da Black Friday é liberada apenas para quem se cadastrar</p>
+          <h2 id="offer-title">Acesse a oferta da Black Friday</h2>
+          <p class="form-card__intro">Leva menos de um minuto.</p>
+
+          <form class="lead-form" name="black-friday-leads" method="post" action="/obrigado.html" data-netlify="true" netlify-honeypot="website">
+            <input type="hidden" name="form-name" value="black-friday-leads" />
+            <p class="honeypot"><label>Não preencha este campo: <input name="website" autocomplete="off" /></label></p>
+            <input type="hidden" name="utm_source" />
+            <input type="hidden" name="utm_medium" />
+            <input type="hidden" name="utm_campaign" />
+            <input type="hidden" name="utm_content" />
+            <input type="hidden" name="utm_term" />
+
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Nome</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Seu nome" required />
+              </div>
+              <div class="field">
+                <label for="whatsapp">WhatsApp</label>
+                <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" aria-describedby="whatsapp-help whatsapp-error" required />
+                <span class="sr-only" id="whatsapp-help">Informe DDD e número do WhatsApp.</span>
+                <span class="field-error" id="whatsapp-error"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail profissional</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com" required />
+            </div>
+
+            <div class="field">
+              <label for="product">Produto de interesse</label>
+              <div class="select-wrap">
+                <select id="product" name="product" required>
+                  <option value="" selected disabled>Selecione Ads, Pages ou Hub</option>
+                  <option value="Ratoeira Ads">Ratoeira Ads</option>
+                  <option value="Ratoeira Pages">Ratoeira Pages</option>
+                  <option value="Ratoeira Hub">Ratoeira Hub</option>
+                  <option value="Ainda não sei">Ainda não sei</option>
+                </select>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 9.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </div>
+            </div>
+
+            <button class="button button--submit" type="submit" data-track="form-submit">
+              <span>Garantir acesso à oferta</span>
+              <span class="button__loader" aria-hidden="true"></span>
+            </button>
+            <p class="form-message" role="status" aria-live="polite"></p>
+            <p class="privacy-note">Sem spam. Apenas comunicações sobre a oferta.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="testimonials" aria-labelledby="testimonials-title">
+        <div class="container testimonials__inner">
+          <div class="testimonials__header">
+            <h2 id="testimonials-title">Quem usa, recomenda!</h2>
+            <p>Depoimentos aprovados entram aqui antes da publicação final.</p>
+          </div>
+
+          <div class="testimonial-track" aria-label="Depoimentos em preparação">
+            <article class="testimonial-card">
+              <blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote>
+              <div class="stars" aria-label="Avaliação de cinco estrelas">
+                <svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg>
+              </div>
+              <p class="testimonial-card__name">[Nome do cliente]</p>
+              <p class="testimonial-card__role">[Cargo / Empresa]</p>
+            </article>
+            <article class="testimonial-card">
+              <blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote>
+              <div class="stars" aria-label="Avaliação de cinco estrelas">
+                <svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg>
+              </div>
+              <p class="testimonial-card__name">[Nome do cliente]</p>
+              <p class="testimonial-card__role">[Cargo / Empresa]</p>
+            </article>
+            <article class="testimonial-card">
+              <blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote>
+              <div class="stars" aria-label="Avaliação de cinco estrelas">
+                <svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg>
+              </div>
+              <p class="testimonial-card__name">[Nome do cliente]</p>
+              <p class="testimonial-card__role">[Cargo / Empresa]</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <a class="brand brand--inverse" href="#top" aria-label="Ratoeira — voltar ao início">
+          <img src="assets/ratoeira-mark.png" width="660" height="467" alt="" />
+          <span>RATOEIRA</span>
+        </a>
+        <p>© 2026 Ratoeira. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <a class="mobile-cta is-hidden" href="#oferta" data-track="mobile-sticky-cta">Quero a oferta</a>
+  </body>
+</html>
