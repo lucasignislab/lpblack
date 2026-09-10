@@ -14,7 +14,7 @@
     <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
-    <script src="animated-gradient.js" defer></script>
+    <script src="scanner.js" defer></script>
   </head>
   <body id="top">
     <!--
@@ -75,7 +75,7 @@
 
       <section class="offer" id="oferta" aria-labelledby="offer-title">
         <div class="offer__bg" aria-hidden="true">
-          <canvas id="offer-gradient"></canvas>
+          <canvas id="offer-scanner"></canvas>
         </div>
         <div class="form-card">
           <p class="form-card__badge">A condição da Black Friday é liberada apenas para quem se cadastrar</p>
@@ -127,7 +127,7 @@
             </div>
 
             <div class="field">
-              <label for="email">E-mail profissional</label>
+              <label for="email">Seu melhor e-mail</label>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com" required />
             </div>
 
@@ -160,7 +160,6 @@
         <div class="container testimonials__inner">
           <div class="testimonials__header">
             <h2 id="testimonials-title">Quem usa, recomenda!</h2>
-            <p>Depoimentos aprovados entram aqui antes da publicação final.</p>
           </div>
 
           <div class="testimonial-track" aria-label="Depoimentos em preparação">
