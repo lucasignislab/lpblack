@@ -89,6 +89,16 @@ form?.addEventListener("submit", (event) => {
     vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
     ddi: ddiSelect?.value || "+55"
   });
+
+  // Guarda o lead para associar às respostas da página de qualificação
+  try {
+    localStorage.setItem("bf_lead", JSON.stringify({
+      nome: form.elements.namedItem("name")?.value || "",
+      email: form.elements.namedItem("email")?.value || "",
+      whatsapp: (ddiSelect?.value || "+55") + " " + (phoneInput?.value || ""),
+      vendas: vendas instanceof HTMLSelectElement ? vendas.value : ""
+    }));
+  } catch (_) {}
 });
 
 if (stickyCta && offerSection && heroCta) {

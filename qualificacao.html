@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content="Responda 5 perguntas rápidas e concorra a um PIX de R$500 na live da Black Friday Ratoeira." />
+    <title>Qualificação Black Friday | Ratoeira</title>
+    <link rel="icon" href="assets/ratoeira-mark.png" />
+    <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="qualificacao.css" />
+    <script src="qualificacao.js" defer></script>
+  </head>
+  <body class="quali-page">
+
+    <header class="quali-header">
+      <a class="brand" href="/" aria-label="Ratoeira — início">
+        <img src="assets/ratoeira-mark.png" width="660" height="467" alt="" />
+        <span>RATOEIRA</span>
+      </a>
+    </header>
+
+    <main class="quali-main">
+      <div class="quali-container">
+
+        <div class="quali-intro">
+          <p class="campaign-badge">
+            <span aria-hidden="true"></span>
+            Ação da Black Friday
+          </p>
+          <h1>Responda em 1 minuto e concorra a um <em>PIX de R$500</em> na live</h1>
+          <p class="quali-sub">São apenas 5 perguntas rápidas. Suas respostas vão nos ajudar a preparar as melhores condições para a Black.</p>
+        </div>
+
+        <div class="quiz" id="quiz">
+          <div class="quiz__progress" aria-hidden="false">
+            <div class="quiz__steps" role="tablist" aria-label="Progresso das perguntas">
+              <button type="button" class="quiz__dot is-current" data-goto="1" aria-label="Pergunta 1"></button>
+              <button type="button" class="quiz__dot" data-goto="2" aria-label="Pergunta 2" disabled></button>
+              <button type="button" class="quiz__dot" data-goto="3" aria-label="Pergunta 3" disabled></button>
+              <button type="button" class="quiz__dot" data-goto="4" aria-label="Pergunta 4" disabled></button>
+              <button type="button" class="quiz__dot" data-goto="5" aria-label="Pergunta 5" disabled></button>
+            </div>
+            <div class="quiz__bar"><div class="quiz__bar-fill" id="quiz-bar-fill"></div></div>
+            <p class="quiz__count"><span id="quiz-current">1</span>/5</p>
+          </div>
+
+          <form id="quiz-form" name="black-friday-qualificacao" method="post" data-netlify="true" netlify-honeypot="website" novalidate>
+            <input type="hidden" name="form-name" value="black-friday-qualificacao" />
+            <p class="honeypot"><label>Não preencha este campo: <input name="website" autocomplete="off" /></label></p>
+
+            <!-- Dados do lead vindos da página 1 (associação no CRM) -->
+            <input type="hidden" name="lead_nome" />
+            <input type="hidden" name="lead_email" />
+            <input type="hidden" name="lead_whatsapp" />
+            <input type="hidden" name="lead_vendas" />
+
+            <!-- Pergunta 1 -->
+            <fieldset class="quiz__step is-active" data-step="1" data-type="radio">
+              <legend>Qual é sua relação atual com nossas ferramentas?</legend>
+              <div class="quiz__options">
+                <label class="quiz-option"><input type="radio" name="relacao" value="Assino o Ads" /><span>Assino o Ads</span></label>
+                <label class="quiz-option"><input type="radio" name="relacao" value="Assino o Pages" /><span>Assino o Pages</span></label>
+                <label class="quiz-option"><input type="radio" name="relacao" value="Assino o Hub (Ads + Pages)" /><span>Assino o Hub (Ads + Pages)</span></label>
+                <label class="quiz-option"><input type="radio" name="relacao" value="Já fui assinante, mas cancelei" /><span>Já fui assinante, mas cancelei</span></label>
+                <label class="quiz-option"><input type="radio" name="relacao" value="Conheço, mas nunca assinei" /><span>Conheço, mas nunca assinei</span></label>
+                <label class="quiz-option"><input type="radio" name="relacao" value="Ainda não conheço bem as ferramentas" /><span>Ainda não conheço bem as ferramentas</span></label>
+              </div>
+            </fieldset>
+
+            <!-- Pergunta 2 -->
+            <fieldset class="quiz__step" data-step="2" data-type="checkbox" data-min="1">
+              <legend>Em quais fontes de tráfego você anuncia atualmente?</legend>
+              <p class="quiz__hint">Selecione todas as opções que se aplicam.</p>
+              <div class="quiz__options">
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="Meta Ads" /><span>Meta Ads</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="Google Ads" /><span>Google Ads</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="TikTok Ads" /><span>TikTok Ads</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="Taboola" /><span>Taboola</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="NewsBreak" /><span>NewsBreak</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="MGID" /><span>MGID</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="RevContent" /><span>RevContent</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="Outras" data-other="fontes_outras" /><span>Outras</span></label>
+                <label class="quiz-option"><input type="checkbox" name="fontes" value="Ainda não anuncio" data-exclusive /><span>Ainda não anuncio</span></label>
+              </div>
+              <div class="quiz__other" id="wrap-fontes_outras" hidden>
+                <label for="fontes_outras">Quais? <small>(opcional)</small></label>
+                <input type="text" id="fontes_outras" name="fontes_outras" placeholder="Ex.: Pinterest Ads, Kwai Ads..." />
+              </div>
+            </fieldset>
+
+            <!-- Pergunta 3 -->
+            <fieldset class="quiz__step" data-step="3" data-type="radio">
+              <legend>Qual dessas frases melhor descreve você para esta Black?</legend>
+              <div class="quiz__options">
+                <label class="quiz-option"><input type="radio" name="intencao" value="Quero assinar uma ferramenta pela primeira vez" /><span>Quero assinar uma ferramenta pela primeira vez</span></label>
+                <label class="quiz-option"><input type="radio" name="intencao" value="Quero voltar a usar uma ferramenta que já assinei" /><span>Quero voltar a usar uma ferramenta que já assinei</span></label>
+                <label class="quiz-option"><input type="radio" name="intencao" value="Quero renovar ou estender meu plano atual" /><span>Quero renovar ou estender meu plano atual</span></label>
+                <label class="quiz-option"><input type="radio" name="intencao" value="Quero fazer upgrade para o Hub" /><span>Quero fazer upgrade para o Hub</span></label>
+                <label class="quiz-option"><input type="radio" name="intencao" value="Estou comparando com outras ferramentas" /><span>Estou comparando com outras ferramentas</span></label>
+                <label class="quiz-option"><input type="radio" name="intencao" value="Tenho interesse, mas preciso entender melhor o custo-benefício" /><span>Tenho interesse, mas preciso entender melhor o custo-benefício</span></label>
+                <label class="quiz-option"><input type="radio" name="intencao" value="Quero apenas conhecer as ofertas" /><span>Quero apenas conhecer as ofertas</span></label>
+              </div>
+            </fieldset>
+
+            <!-- Pergunta 4 -->
+            <fieldset class="quiz__step" data-step="4" data-type="checkbox" data-min="1" data-max="2">
+              <legend>O que você mais gostaria de encontrar na Black?</legend>
+              <p class="quiz__hint">Escolha até duas opções.</p>
+              <div class="quiz__options">
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Plano vitalício" /><span>Plano vitalício</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Maior desconto possível nos planos" /><span>Maior desconto possível nos planos</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Combo Ads + Pages" /><span>Combo Ads + Pages</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Cursos e treinamentos" /><span>Cursos e treinamentos</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Eventos e mentorias" /><span>Eventos e mentorias</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Templates, páginas ou materiais prontos" /><span>Templates, páginas ou materiais prontos</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Bônus exclusivos" /><span>Bônus exclusivos</span></label>
+                <label class="quiz-option"><input type="checkbox" name="ofertas" value="Condições especiais de parcelamento" /><span>Condições especiais de parcelamento</span></label>
+              </div>
+            </fieldset>
+
+            <!-- Pergunta 5 -->
+            <fieldset class="quiz__step" data-step="5" data-type="checkbox" data-min="1">
+              <legend>O que poderia impedir você de aproveitar uma oferta na Black?</legend>
+              <p class="quiz__hint">Selecione todas as opções que se aplicam.</p>
+              <div class="quiz__options">
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="O preço ficar acima do que posso investir" /><span>O preço ficar acima do que posso investir</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Não ter certeza se a ferramenta serve para mim" /><span>Não ter certeza se a ferramenta serve para mim</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Não entender claramente como utilizar" /><span>Não entender claramente como utilizar</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Não ter tempo para implementar" /><span>Não ter tempo para implementar</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Já utilizar outra ferramenta" /><span>Já utilizar outra ferramenta</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Precisar conversar com um sócio ou equipe" /><span>Precisar conversar com um sócio ou equipe</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="A condição de pagamento" /><span>A condição de pagamento</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Não encontrar o plano ou produto que quero" /><span>Não encontrar o plano ou produto que quero</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Nada — se a oferta fizer sentido, estou pronto para comprar" data-exclusive /><span>Nada — se a oferta fizer sentido, estou pronto para comprar</span></label>
+                <label class="quiz-option"><input type="checkbox" name="objecoes" value="Outro" data-other="objecoes_outro" /><span>Outro</span></label>
+              </div>
+              <div class="quiz__other" id="wrap-objecoes_outro" hidden>
+                <label for="objecoes_outro">Conte em poucas palavras: <small>(opcional)</small></label>
+                <input type="text" id="objecoes_outro" name="objecoes_outro" placeholder="Escreva aqui..." />
+              </div>
+            </fieldset>
+
+            <p class="quiz__error" id="quiz-error" role="alert"></p>
+
+            <div class="quiz__nav">
+              <button type="button" class="button quiz__prev" id="quiz-prev" hidden>Anterior</button>
+              <button type="button" class="button quiz__next" id="quiz-next" disabled>
+                <span>Continuar</span>
+                <span class="button__loader" aria-hidden="true"></span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Confirmação final -->
+          <div class="quiz__done" id="quiz-done" hidden>
+            <div class="quiz__done-icon" aria-hidden="true">✓</div>
+            <h2>Participação confirmada!</h2>
+            <p>Agora é só acompanhar a live para concorrer ao PIX de R$500.</p>
+            <a class="button button--primary quiz__cta" href="#" data-track="quiz-grupo">Entrar no grupo da Black</a>
+          </div>
+        </div>
+
+        <p class="quali-rules">
+          <a href="#" data-track="quiz-regras">Ver regras da ação do PIX de R$500</a>
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <a class="brand brand--inverse" href="/" aria-label="Ratoeira — voltar ao início">
+          <img src="assets/ratoeira-mark.png" width="660" height="467" alt="" />
+          <span>RATOEIRA</span>
+        </a>
+        <p>© 2026 Ratoeira. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>
