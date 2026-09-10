@@ -14,6 +14,7 @@
     <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
+    <script src="animated-gradient.js" defer></script>
   </head>
   <body id="top">
     <!--
@@ -33,7 +34,14 @@
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__bg" aria-hidden="true">
+          <div class="hero__streak hero__streak--1"></div>
+          <div class="hero__streak hero__streak--2"></div>
+          <div class="hero__streak hero__streak--3"></div>
+          <div class="hero__streak hero__streak--4"></div>
+          <div class="hero__streak hero__streak--5"></div>
+          <div class="hero__dots"></div>
+        </div>
         <div class="container hero__grid">
           <div class="hero__copy">
             <a class="brand" href="#top" aria-label="Ratoeira — início">
@@ -66,7 +74,9 @@
       </section>
 
       <section class="offer" id="oferta" aria-labelledby="offer-title">
-        <div class="offer__aura" aria-hidden="true"></div>
+        <div class="offer__bg" aria-hidden="true">
+          <canvas id="offer-gradient"></canvas>
+        </div>
         <div class="form-card">
           <p class="form-card__badge">A condição da Black Friday é liberada apenas para quem se cadastrar</p>
           <h2 id="offer-title">Acesse a oferta da Black Friday</h2>
@@ -88,7 +98,29 @@
               </div>
               <div class="field">
                 <label for="whatsapp">WhatsApp</label>
-                <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" aria-describedby="whatsapp-help whatsapp-error" required />
+                <div class="phone-group">
+                  <div class="select-wrap phone-group__ddi">
+                    <select id="ddi" name="ddi" aria-label="DDI do país">
+                      <option value="+55" selected>🇧🇷 +55</option>
+                      <option value="+351">🇵🇹 +351</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+54">🇦🇷 +54</option>
+                      <option value="+56">🇨🇱 +56</option>
+                      <option value="+57">🇨🇴 +57</option>
+                      <option value="+52">🇲🇽 +52</option>
+                      <option value="+598">🇺🇾 +598</option>
+                      <option value="+595">🇵🇾 +595</option>
+                      <option value="+51">🇵🇪 +51</option>
+                      <option value="+34">🇪🇸 +34</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+39">🇮🇹 +39</option>
+                    </select>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 9.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </div>
+                  <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(00) 00000-0000" aria-describedby="whatsapp-help whatsapp-error" required />
+                </div>
                 <span class="sr-only" id="whatsapp-help">Informe DDD e número do WhatsApp.</span>
                 <span class="field-error" id="whatsapp-error"></span>
               </div>
@@ -100,14 +132,15 @@
             </div>
 
             <div class="field">
-              <label for="product">Produto de interesse</label>
+              <label for="vendas">Quantas vendas por mês sua operação faz na média?</label>
               <div class="select-wrap">
-                <select id="product" name="product" required>
-                  <option value="" selected disabled>Selecione Ads, Pages ou Hub</option>
-                  <option value="Ratoeira Ads">Ratoeira Ads</option>
-                  <option value="Ratoeira Pages">Ratoeira Pages</option>
-                  <option value="Ratoeira Hub">Ratoeira Hub</option>
-                  <option value="Ainda não sei">Ainda não sei</option>
+                <select id="vendas" name="vendas" required>
+                  <option value="" selected disabled>Selecione a faixa de vendas</option>
+                  <option value="Até 1.000">Até 1.000</option>
+                  <option value="De 1.000 a 2.500">De 1.000 a 2.500</option>
+                  <option value="De 2.500 a 5.000">De 2.500 a 5.000</option>
+                  <option value="De 5.000 a 15.000">De 5.000 a 15.000</option>
+                  <option value="Acima de 15.000">Acima de 15.000</option>
                 </select>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 9.5 5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </div>

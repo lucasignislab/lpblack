@@ -1,0 +1,9 @@
+{
+  "name": "lpblack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page Black Friday Ratoeira",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}

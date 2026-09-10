@@ -1,5 +1,6 @@
 const form = document.querySelector(".lead-form");
 const phoneInput = document.querySelector("#whatsapp");
+const ddiSelect = document.querySelector("#ddi");
 const stickyCta = document.querySelector(".mobile-cta");
 const offerSection = document.querySelector("#oferta");
 const heroCta = document.querySelector(".button--primary");
@@ -19,6 +20,8 @@ function formatPhone(value) {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
+const isBrazil = () => !ddiSelect || ddiSelect.value === "+55";
+
 function setUtmFields() {
   if (!form) return;
   const params = new URLSearchParams(window.location.search);
@@ -33,26 +36,40 @@ document.querySelectorAll("[data-track]").forEach((element) => {
 });
 
 phoneInput?.addEventListener("input", (event) => {
-  event.target.value = formatPhone(event.target.value);
+  event.target.value = isBrazil()
+    ? formatPhone(event.target.value)
+    : event.target.value.replace(/[^\d\s-]/g, "").slice(0, 17);
   event.target.removeAttribute("aria-invalid");
   const phoneError = document.querySelector("#whatsapp-error");
   if (phoneError) phoneError.textContent = "";
+});
+
+ddiSelect?.addEventListener("change", () => {
+  if (!phoneInput) return;
+  phoneInput.value = "";
+  phoneInput.placeholder = isBrazil() ? "(00) 00000-0000" : "Número com código de área";
+  phoneInput.focus();
 });
 
 form?.addEventListener("submit", (event) => {
   const message = form.querySelector(".form-message");
   const submit = form.querySelector("button[type='submit']");
   const digits = phoneInput?.value.replace(/\D/g, "") || "";
+  const minDigits = isBrazil() ? 10 : 6;
 
   form.querySelectorAll("[aria-invalid='true']").forEach((field) => field.removeAttribute("aria-invalid"));
   message?.classList.remove("is-visible");
 
-  if (!form.checkValidity() || digits.length < 10) {
+  if (!form.checkValidity() || digits.length < minDigits) {
     event.preventDefault();
-    if (digits.length < 10 && phoneInput) {
+    if (digits.length < minDigits && phoneInput) {
       phoneInput.setAttribute("aria-invalid", "true");
       const phoneError = document.querySelector("#whatsapp-error");
-      if (phoneError) phoneError.textContent = "Informe o DDD e um número válido.";
+      if (phoneError) {
+        phoneError.textContent = isBrazil()
+          ? "Informe o DDD e um número válido."
+          : "Informe um número válido com o código de área.";
+      }
       phoneInput.focus();
     }
     if (message) {
@@ -67,8 +84,11 @@ form?.addEventListener("submit", (event) => {
   submit?.setAttribute("disabled", "");
   const submitLabel = submit?.querySelector("span:first-child");
   if (submitLabel) submitLabel.textContent = "Enviando...";
-  const product = form.elements.namedItem("product");
-  trackEvent("lead_form_submit", { product: product instanceof HTMLSelectElement ? product.value : "" });
+  const vendas = form.elements.namedItem("vendas");
+  trackEvent("lead_form_submit", {
+    vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
+    ddi: ddiSelect?.value || "+55"
+  });
 });
 
 if (stickyCta && offerSection && heroCta) {
