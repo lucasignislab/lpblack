@@ -99,6 +99,25 @@ form?.addEventListener("submit", (event) => {
       vendas: vendas instanceof HTMLSelectElement ? vendas.value : ""
     }));
   } catch (_) {}
+
+  // Envia ao Netlify via AJAX e redireciona para a página de qualificação
+  event.preventDefault();
+  const goToQuiz = () => window.location.assign("/qualificacao.html");
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+    .then((resp) => {
+      if (!resp.ok && resp.type !== "opaque") throw new Error("HTTP " + resp.status);
+      goToQuiz();
+    })
+    .catch(() => {
+      // Fallback: tenta o envio nativo (o action também aponta para a qualificação)
+      form.submit();
+      setTimeout(goToQuiz, 1500);
+    });
 });
 
 if (stickyCta && offerSection && heroCta) {
