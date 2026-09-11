@@ -102,7 +102,29 @@ form?.addEventListener("submit", (event) => {
 
   // Envia ao Netlify via AJAX e redireciona para a página de qualificação
   event.preventDefault();
-  const goToQuiz = () => window.location.assign("/qualificacao.html");
+
+  // Garante que a página de qualificação já está no ar antes de navegar
+  // (evita 404 se o CDN ainda estiver propagando o deploy)
+  let attempts = 0;
+  const goToQuiz = async () => {
+    attempts += 1;
+    try {
+      const check = await fetch("/qualificacao.html?cb=" + Date.now(), {
+        method: "HEAD",
+        cache: "no-store"
+      });
+      if (check.ok) {
+        window.location.assign("/qualificacao.html");
+        return;
+      }
+    } catch (_) {}
+    if (attempts < 10) {
+      setTimeout(goToQuiz, 2000);
+    } else {
+      // Última tentativa: navega mesmo assim
+      window.location.assign("/qualificacao.html");
+    }
+  };
 
   fetch("/", {
     method: "POST",
