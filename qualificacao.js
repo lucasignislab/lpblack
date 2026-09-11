@@ -118,7 +118,7 @@
   });
 
   // ---------- Navegação ----------
-  nextBtn?.addEventListener("click", async () => {
+  nextBtn?.addEventListener("click", () => {
     const step = stepEl(current);
     if (!isStepValid(step)) {
       if (error) error.textContent = "Selecione ao menos uma resposta para continuar.";
@@ -136,24 +136,27 @@
     nextBtn.setAttribute("disabled", "");
     if (nextLabel) nextLabel.textContent = "Enviando...";
 
+    form.elements.qualified_at.value = new Date().toISOString();
+    const body = new URLSearchParams(new FormData(form)).toString();
     try {
-      form.elements.qualified_at.value = new Date().toISOString();
-      const body = new URLSearchParams(new FormData(form)).toString();
-      const resp = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body,
-      });
-      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      localStorage.setItem("bf_quiz_done", new Date().toISOString());
+      localStorage.setItem("bf_quiz_pending", body);
+    } catch (_) {}
 
-      try { localStorage.setItem("bf_quiz_done", new Date().toISOString()); } catch (_) {}
-      window.location.assign("/obrigado.html");
-    } catch (e) {
-      if (error) error.textContent = "Não foi possível enviar. Verifique sua conexão e tente novamente.";
-      nextBtn.removeAttribute("aria-busy");
-      nextBtn.removeAttribute("disabled");
-      if (nextLabel) nextLabel.textContent = "Confirmar minha participação";
-    }
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+      keepalive: true,
+    }).then((response) => {
+      if (response.ok) {
+        try { localStorage.removeItem("bf_quiz_pending"); } catch (_) {}
+      }
+    }).catch(() => {
+      window.dispatchEvent(new CustomEvent("ratoeira:qualification_delivery_failed"));
+    });
+
+    window.location.assign("/obrigado.html");
   });
 
   prevBtn?.addEventListener("click", () => goTo(current - 1));

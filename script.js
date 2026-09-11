@@ -94,7 +94,6 @@ form?.addEventListener("submit", (event) => {
   const leadId = createLeadId();
   if (leadIdInput instanceof HTMLInputElement) leadIdInput.value = leadId;
   const qualificationUrl = `/qualificacao.html?lead_id=${encodeURIComponent(leadId)}`;
-  form.action = qualificationUrl;
   trackEvent("lead_form_submit", {
     vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
     ddi: ddiSelect?.value || "+55"
@@ -111,46 +110,21 @@ form?.addEventListener("submit", (event) => {
     }));
   } catch (_) {}
 
-  // Envia ao Netlify via AJAX e redireciona para a página de qualificação
+  // Tenta registrar o lead sem permitir que uma falha do endpoint interrompa o fluxo.
   event.preventDefault();
-
-  // Garante que a página de qualificação já está no ar antes de navegar
-  // (evita 404 se o CDN ainda estiver propagando o deploy)
-  let attempts = 0;
-  const goToQuiz = async () => {
-    attempts += 1;
-    try {
-      const check = await fetch("/qualificacao.html?cb=" + Date.now(), {
-        method: "HEAD",
-        cache: "no-store"
-      });
-      if (check.ok) {
-        window.location.assign(qualificationUrl);
-        return;
-      }
-    } catch (_) {}
-    if (attempts < 10) {
-      setTimeout(goToQuiz, 2000);
-    } else {
-      // Última tentativa: navega mesmo assim
-      window.location.assign(qualificationUrl);
-    }
-  };
 
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(new FormData(form)).toString()
+    body: new URLSearchParams(new FormData(form)).toString(),
+    keepalive: true
   })
-    .then((resp) => {
-      if (!resp.ok && resp.type !== "opaque") throw new Error("HTTP " + resp.status);
-      goToQuiz();
+    .then((response) => {
+      if (!response.ok) trackEvent("lead_form_delivery_failed", { status: response.status });
     })
-    .catch(() => {
-      // Fallback: tenta o envio nativo (o action também aponta para a qualificação)
-      form.submit();
-      setTimeout(goToQuiz, 1500);
-    });
+    .catch(() => trackEvent("lead_form_delivery_failed", { status: "network_error" }));
+
+  window.location.assign(qualificationUrl);
 });
 
 if (stickyCta && offerSection && heroCta) {
