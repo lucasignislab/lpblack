@@ -47,15 +47,17 @@
             <p class="quiz__count"><span id="quiz-current">1</span>/5</p>
           </div>
 
-          <form id="quiz-form" name="black-friday-qualificacao" method="post" data-netlify="true" netlify-honeypot="website" novalidate>
+          <form id="quiz-form" name="black-friday-qualificacao" method="post" action="/obrigado.html" data-netlify="true" netlify-honeypot="website" novalidate>
             <input type="hidden" name="form-name" value="black-friday-qualificacao" />
             <p class="honeypot"><label>Não preencha este campo: <input name="website" autocomplete="off" /></label></p>
 
             <!-- Dados do lead vindos da página 1 (associação no CRM) -->
+            <input type="hidden" name="lead_id" />
             <input type="hidden" name="lead_nome" />
             <input type="hidden" name="lead_email" />
             <input type="hidden" name="lead_whatsapp" />
             <input type="hidden" name="lead_vendas" />
+            <input type="hidden" name="qualified_at" />
 
             <!-- Pergunta 1 -->
             <fieldset class="quiz__step is-active" data-step="1" data-type="radio">
@@ -154,13 +156,6 @@
             </div>
           </form>
 
-          <!-- Confirmação final -->
-          <div class="quiz__done" id="quiz-done" hidden>
-            <div class="quiz__done-icon" aria-hidden="true">✓</div>
-            <h2>Participação confirmada!</h2>
-            <p>Agora é só acompanhar a live para concorrer ao PIX de R$500.</p>
-            <a class="button button--primary quiz__cta" href="#" data-track="quiz-grupo">Entrar no grupo da Black</a>
-          </div>
         </div>
 
         <p class="quali-rules">

@@ -12,16 +12,16 @@
   const nextBtn = document.getElementById("quiz-next");
   const nextLabel = nextBtn?.querySelector("span:first-child");
   const error = document.getElementById("quiz-error");
-  const done = document.getElementById("quiz-done");
-  const progress = document.querySelector(".quiz__progress");
 
   const TOTAL = steps.length;
   let current = 1;
   let maxReached = 1;
 
   // ---------- Lead da página 1 ----------
+  form.elements.lead_id.value = new URLSearchParams(window.location.search).get("lead_id") || "";
   try {
     const lead = JSON.parse(localStorage.getItem("bf_lead") || "{}");
+    form.elements.lead_id.value = lead.leadId || form.elements.lead_id.value;
     form.elements.lead_nome.value = lead.nome || "";
     form.elements.lead_email.value = lead.email || "";
     form.elements.lead_whatsapp.value = lead.whatsapp || "";
@@ -62,7 +62,7 @@
       dot.classList.toggle("is-done", n <= maxReached && n !== current);
       dot.disabled = n > maxReached;
     });
-    if (barFill) barFill.style.width = (current / TOTAL) * 100 + "%";
+    if (barFill) barFill.style.transform = `scaleX(${current / TOTAL})`;
     if (countCurrent) countCurrent.textContent = String(current);
     refreshNav();
   }
@@ -137,6 +137,7 @@
     if (nextLabel) nextLabel.textContent = "Enviando...";
 
     try {
+      form.elements.qualified_at.value = new Date().toISOString();
       const body = new URLSearchParams(new FormData(form)).toString();
       const resp = await fetch("/", {
         method: "POST",
@@ -145,13 +146,8 @@
       });
       if (!resp.ok) throw new Error("HTTP " + resp.status);
 
-      form.hidden = true;
-      if (progress) progress.hidden = true;
-      if (done) {
-        done.hidden = false;
-        done.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
       try { localStorage.setItem("bf_quiz_done", new Date().toISOString()); } catch (_) {}
+      window.location.assign("/obrigado.html");
     } catch (e) {
       if (error) error.textContent = "Não foi possível enviar. Verifique sua conexão e tente novamente.";
       nextBtn.removeAttribute("aria-busy");

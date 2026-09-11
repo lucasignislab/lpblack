@@ -31,6 +31,11 @@ function setUtmFields() {
   });
 }
 
+function createLeadId() {
+  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  return `lead-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
 document.querySelectorAll("[data-track]").forEach((element) => {
   element.addEventListener("click", () => trackEvent("cta_click", { placement: element.dataset.track }));
 });
@@ -85,6 +90,11 @@ form?.addEventListener("submit", (event) => {
   const submitLabel = submit?.querySelector("span:first-child");
   if (submitLabel) submitLabel.textContent = "Enviando...";
   const vendas = form.elements.namedItem("vendas");
+  const leadIdInput = form.elements.namedItem("lead_id");
+  const leadId = createLeadId();
+  if (leadIdInput instanceof HTMLInputElement) leadIdInput.value = leadId;
+  const qualificationUrl = `/qualificacao.html?lead_id=${encodeURIComponent(leadId)}`;
+  form.action = qualificationUrl;
   trackEvent("lead_form_submit", {
     vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
     ddi: ddiSelect?.value || "+55"
@@ -96,7 +106,8 @@ form?.addEventListener("submit", (event) => {
       nome: form.elements.namedItem("name")?.value || "",
       email: form.elements.namedItem("email")?.value || "",
       whatsapp: (ddiSelect?.value || "+55") + " " + (phoneInput?.value || ""),
-      vendas: vendas instanceof HTMLSelectElement ? vendas.value : ""
+      vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
+      leadId
     }));
   } catch (_) {}
 
@@ -114,7 +125,7 @@ form?.addEventListener("submit", (event) => {
         cache: "no-store"
       });
       if (check.ok) {
-        window.location.assign("/qualificacao.html");
+        window.location.assign(qualificationUrl);
         return;
       }
     } catch (_) {}
@@ -122,7 +133,7 @@ form?.addEventListener("submit", (event) => {
       setTimeout(goToQuiz, 2000);
     } else {
       // Última tentativa: navega mesmo assim
-      window.location.assign("/qualificacao.html");
+      window.location.assign(qualificationUrl);
     }
   };
 
