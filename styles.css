@@ -392,6 +392,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .thanks-page { min-height: 100vh; background-color: var(--cream); background-image: radial-gradient(circle, rgba(10, 10, 10, 0.085) 1px, transparent 1.1px); background-size: 40px 40px; }
 .thanks { display: grid; min-height: 100vh; padding: 24px; place-items: center; }
 .thanks__card { width: min(100%, 620px); padding: clamp(32px, 6vw, 64px); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-card); }
+.thanks__card > .brand { display: flex; }
 .thanks__card h1 { max-width: none; margin-bottom: 18px; font-size: clamp(2.7rem, 7vw, 4.5rem); }
 .thanks__card > p:not(.campaign-badge) { max-width: 54ch; margin: 0; color: var(--muted); font-size: 1.0625rem; line-height: 1.6; }
 .thanks__card .group-cta { width: 100%; margin-top: 28px; }
@@ -426,6 +427,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .testimonial-track { display: flex; overflow-x: auto; margin-inline: -16px; padding: 0 16px 14px; scroll-snap-type: x mandatory; scrollbar-color: #3c3c3f #111; scrollbar-width: thin; }
   .testimonial-card { min-width: min(84vw, 340px); scroll-snap-align: start; }
   .footer__inner { align-items: flex-start; flex-direction: column; justify-content: center; min-height: 150px; padding-bottom: 28px; }
+  .thanks__card > .brand { margin-bottom: 30px; }
   .mobile-cta { position: fixed; z-index: 20; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); left: 14px; display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: var(--radius-md); background: var(--brand-gold); color: var(--ink); box-shadow: 0 12px 34px rgba(10, 10, 10, 0.28); font-weight: 900; text-decoration: none; transition: opacity 180ms ease, transform 180ms ease; }
   .mobile-cta.is-hidden { opacity: 0; pointer-events: none; transform: translateY(18px); }
 }
