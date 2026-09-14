@@ -421,7 +421,8 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 
 @media (max-width: 760px) {
   .container { width: min(calc(100% - 32px), var(--container)); }
-  .hero .brand { top: 20px; left: 16px; }
+  .hero .brand { position: static; display: flex; margin-bottom: 24px; }
+  .hero .campaign-badge { max-width: 100%; }
   .hero__grid { grid-template-columns: 1fr; gap: 44px; padding-block: 32px 56px; }
   .hero__copy { max-width: none; }
   .brand { margin-bottom: 30px; }
