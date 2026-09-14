@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js?v=3" defer></script>
     <script src="scanner.js" defer></script>
-    <script src="testimonials.js?v=1" defer></script>
+    <script src="testimonials.js?v=2" defer></script>
   </head>
   <body id="top">
     <!--
@@ -29,6 +29,10 @@
     <svg class="icon-defs" aria-hidden="true">
       <symbol id="star-icon" viewBox="0 0 24 24">
         <path d="m12 2.6 2.83 5.74 6.34.92-4.59 4.47 1.08 6.31L12 17.06l-5.66 2.98 1.08-6.31-4.59-4.47 6.34-.92L12 2.6Z" />
+      </symbol>
+      <symbol id="zoom-in-icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35M11 8v6M8 11h6" />
       </symbol>
     </svg>
     <a class="skip-link" href="#oferta">Ir para o formulário</a>
@@ -167,30 +171,34 @@
           <div class="testimonial-marquee" tabindex="0" aria-label="Depoimentos em movimento. Passe o cursor ou mantenha o foco para pausar.">
             <div class="testimonial-track">
               <div class="testimonial-set">
-                <article class="testimonial-card">
-                  <blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote>
-                  <div class="stars" aria-label="Avaliação de cinco estrelas">
-                    <svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg>
-                  </div>
-                  <p class="testimonial-card__name">[Nome do cliente]</p>
-                  <p class="testimonial-card__role">[Cargo / Empresa]</p>
-                </article>
-                <article class="testimonial-card">
-                  <blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote>
-                  <div class="stars" aria-label="Avaliação de cinco estrelas">
-                    <svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg>
-                  </div>
-                  <p class="testimonial-card__name">[Nome do cliente]</p>
-                  <p class="testimonial-card__role">[Cargo / Empresa]</p>
-                </article>
-                <article class="testimonial-card">
-                  <blockquote>“[Depoimento de cliente com uma transformação clara e verificável.]”</blockquote>
-                  <div class="stars" aria-label="Avaliação de cinco estrelas">
-                    <svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg><svg aria-hidden="true"><use href="#star-icon" /></svg>
-                  </div>
-                  <p class="testimonial-card__name">[Nome do cliente]</p>
-                  <p class="testimonial-card__role">[Cargo / Empresa]</p>
-                </article>
+                <a class="testimonial-card" href="assets/testimonial-francisco.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de Francisco em tamanho completo">
+                  <img src="assets/testimonial-francisco.jpeg" width="1277" height="582" loading="lazy" decoding="async" alt="Depoimento de Francisco elogiando a plataforma e o suporte após voltar a vender com a Ratoeira." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
+                <a class="testimonial-card" href="assets/testimonial-antidio-souza.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de Antídio Souza em tamanho completo">
+                  <img src="assets/testimonial-antidio-souza.jpeg" width="1142" height="560" loading="lazy" decoding="async" alt="Depoimento de Antídio Souza sobre a facilidade das configurações e a rapidez para começar a usar a ferramenta." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
+                <a class="testimonial-card" href="assets/testimonial-roberto-junior.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de Roberto Junior em tamanho completo">
+                  <img src="assets/testimonial-roberto-junior.jpeg" width="1600" height="712" loading="lazy" decoding="async" alt="Depoimento de Roberto Junior dizendo que a ferramenta é excelente e desejando sucesso à equipe." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
+                <a class="testimonial-card" href="assets/testimonial-otair-oliveira.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de Otair Oliveira em tamanho completo">
+                  <img src="assets/testimonial-otair-oliveira.jpeg" width="664" height="435" loading="lazy" decoding="async" alt="Depoimento de Otair Oliveira elogiando as aulas curtas, simples e objetivas após configurar e realizar uma venda." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
+                <a class="testimonial-card" href="assets/testimonial-larissa-gomes.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de Larissa Gomes em tamanho completo">
+                  <img src="assets/testimonial-larissa-gomes.jpeg" width="1280" height="553" loading="lazy" decoding="async" alt="Depoimento de Larissa Gomes recomendando a Ratoeira e relatando que suas conversões estão funcionando corretamente." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
+                <a class="testimonial-card" href="assets/testimonial-jaique.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de Jaique em tamanho completo">
+                  <img src="assets/testimonial-jaique.jpeg" width="865" height="537" loading="lazy" decoding="async" alt="Depoimento de Jaique destacando como foi fácil configurar as notificações e os scripts da Ratoeira." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
+                <a class="testimonial-card" href="assets/testimonial-andre-campelo.jpeg" target="_blank" rel="noopener" aria-label="Abrir o depoimento de André Campelo em tamanho completo">
+                  <img src="assets/testimonial-andre-campelo.jpeg" width="1280" height="861" loading="lazy" decoding="async" alt="Depoimento de André Campelo agradecendo o suporte da equipe e dizendo que todas as dúvidas foram resolvidas." />
+                  <span class="testimonial-card__zoom" aria-hidden="true"><svg><use href="#zoom-in-icon" /></svg></span>
+                </a>
               </div>
             </div>
           </div>

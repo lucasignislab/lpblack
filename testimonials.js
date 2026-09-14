@@ -6,6 +6,7 @@
 
   const clone = sourceSet.cloneNode(true);
   clone.setAttribute("aria-hidden", "true");
+  clone.querySelectorAll("a").forEach((link) => link.setAttribute("tabindex", "-1"));
   track.appendChild(clone);
   marquee.classList.add("is-ready");
 })();
