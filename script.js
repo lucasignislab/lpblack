@@ -4,6 +4,7 @@ const ddiSelect = document.querySelector("#ddi");
 const stickyCta = document.querySelector(".mobile-cta");
 const offerSection = document.querySelector("#oferta");
 const heroCta = document.querySelector(".button--primary");
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 function trackEvent(name, details = {}) {
   const payload = { event: name, ...details };
@@ -25,10 +26,17 @@ const isBrazil = () => !ddiSelect || ddiSelect.value === "+55";
 function setUtmFields() {
   if (!form) return;
   const params = new URLSearchParams(window.location.search);
-  ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+  UTM_KEYS.forEach((key) => {
     const input = form.elements.namedItem(key);
     if (input instanceof HTMLInputElement) input.value = params.get(key) || "";
   });
+}
+
+function getFormUtms() {
+  return Object.fromEntries(UTM_KEYS.map((key) => {
+    const input = form?.elements.namedItem(key);
+    return [key, input instanceof HTMLInputElement ? input.value : ""];
+  }));
 }
 
 function createLeadId() {
@@ -93,7 +101,12 @@ form?.addEventListener("submit", (event) => {
   const leadIdInput = form.elements.namedItem("lead_id");
   const leadId = createLeadId();
   if (leadIdInput instanceof HTMLInputElement) leadIdInput.value = leadId;
-  const qualificationUrl = `/qualificacao.html?lead_id=${encodeURIComponent(leadId)}`;
+  const utms = getFormUtms();
+  const qualificationParams = new URLSearchParams({ lead_id: leadId });
+  UTM_KEYS.forEach((key) => {
+    if (utms[key]) qualificationParams.set(key, utms[key]);
+  });
+  const qualificationUrl = `/qualificacao.html?${qualificationParams.toString()}`;
   trackEvent("lead_form_submit", {
     vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
     ddi: ddiSelect?.value || "+55"
@@ -106,7 +119,8 @@ form?.addEventListener("submit", (event) => {
       email: form.elements.namedItem("email")?.value || "",
       whatsapp: (ddiSelect?.value || "+55") + " " + (phoneInput?.value || ""),
       vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
-      leadId
+      leadId,
+      utms
     }));
   } catch (_) {}
 

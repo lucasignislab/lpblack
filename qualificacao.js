@@ -12,21 +12,44 @@
   const nextBtn = document.getElementById("quiz-next");
   const nextLabel = nextBtn?.querySelector("span:first-child");
   const error = document.getElementById("quiz-error");
+  const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
   const TOTAL = steps.length;
   let current = 1;
   let maxReached = 1;
 
   // ---------- Lead da página 1 ----------
-  form.elements.lead_id.value = new URLSearchParams(window.location.search).get("lead_id") || "";
+  const params = new URLSearchParams(window.location.search);
+  const leadIdFromUrl = params.get("lead_id") || "";
+  form.elements.lead_id.value = leadIdFromUrl;
+  let lead = {};
   try {
-    const lead = JSON.parse(localStorage.getItem("bf_lead") || "{}");
-    form.elements.lead_id.value = lead.leadId || form.elements.lead_id.value;
+    const storedLead = JSON.parse(localStorage.getItem("bf_lead") || "{}");
+    if (storedLead && typeof storedLead === "object") lead = storedLead;
+  } catch (_) {
+    lead = {};
+  }
+  const matchesLead = Boolean(lead.leadId) && (!leadIdFromUrl || lead.leadId === leadIdFromUrl);
+  if (matchesLead) {
+    form.elements.lead_id.value = leadIdFromUrl || lead.leadId;
     form.elements.lead_nome.value = lead.nome || "";
     form.elements.lead_email.value = lead.email || "";
     form.elements.lead_whatsapp.value = lead.whatsapp || "";
     form.elements.lead_vendas.value = lead.vendas || "";
-  } catch (_) {}
+  }
+  UTM_KEYS.forEach((key) => {
+    form.elements[key].value = params.get(key) || (matchesLead ? lead.utms?.[key] || "" : "");
+  });
+
+  function nextPageUrl(path) {
+    const nextParams = new URLSearchParams();
+    if (form.elements.lead_id.value) nextParams.set("lead_id", form.elements.lead_id.value);
+    UTM_KEYS.forEach((key) => {
+      if (form.elements[key].value) nextParams.set(key, form.elements[key].value);
+    });
+    const query = nextParams.toString();
+    return query ? `${path}?${query}` : path;
+  }
 
   // ---------- Helpers ----------
   function stepEl(n) {
@@ -156,7 +179,7 @@
       window.dispatchEvent(new CustomEvent("ratoeira:qualification_delivery_failed"));
     });
 
-    window.location.assign("/obrigado.html");
+    window.location.assign(nextPageUrl("/obrigado.html"));
   });
 
   prevBtn?.addEventListener("click", () => goTo(current - 1));
