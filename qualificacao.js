@@ -1,5 +1,5 @@
 /* Wizard de qualificação — Black Friday Ratoeira
-   Uma pergunta por vez, sem reload; respostas enviadas ao Netlify ao final. */
+   Uma pergunta por vez, sem reload; respostas enviadas ao webhook ao final. */
 (function () {
   const form = document.getElementById("quiz-form");
   if (!form) return;
@@ -14,14 +14,19 @@
   const error = document.getElementById("quiz-error");
   const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
+  function inputField(name) {
+    const field = form.elements.namedItem(name);
+    return field instanceof HTMLInputElement ? field : null;
+  }
+
   const TOTAL = steps.length;
   let current = 1;
   let maxReached = 1;
 
-  // ---------- Lead da página 1 ----------
   const params = new URLSearchParams(window.location.search);
   const leadIdFromUrl = params.get("lead_id") || "";
-  form.elements.lead_id.value = leadIdFromUrl;
+  const leadIdField = inputField("lead_id");
+  if (leadIdField) leadIdField.value = leadIdFromUrl;
   let lead = {};
   try {
     const storedLead = JSON.parse(localStorage.getItem("bf_lead") || "{}");
@@ -31,27 +36,34 @@
   }
   const matchesLead = Boolean(lead.leadId) && (!leadIdFromUrl || lead.leadId === leadIdFromUrl);
   if (matchesLead) {
-    form.elements.lead_id.value = leadIdFromUrl || lead.leadId;
-    form.elements.lead_nome.value = lead.nome || "";
-    form.elements.lead_email.value = lead.email || "";
-    form.elements.lead_whatsapp.value = lead.whatsapp || "";
-    form.elements.lead_vendas.value = lead.vendas || "";
+    if (leadIdField) leadIdField.value = leadIdFromUrl || lead.leadId;
+    const leadFields = {
+      lead_nome: lead.nome,
+      lead_email: lead.email,
+      lead_whatsapp: lead.whatsapp,
+      lead_vendas: lead.vendas,
+    };
+    Object.entries(leadFields).forEach(([name, value]) => {
+      const field = inputField(name);
+      if (field) field.value = value || "";
+    });
   }
   UTM_KEYS.forEach((key) => {
-    form.elements[key].value = params.get(key) || (matchesLead ? lead.utms?.[key] || "" : "");
+    const field = inputField(key);
+    if (field) field.value = params.get(key) || (matchesLead ? lead.utms?.[key] || "" : "");
   });
 
   function nextPageUrl(path) {
     const nextParams = new URLSearchParams();
-    if (form.elements.lead_id.value) nextParams.set("lead_id", form.elements.lead_id.value);
+    if (leadIdField?.value) nextParams.set("lead_id", leadIdField.value);
     UTM_KEYS.forEach((key) => {
-      if (form.elements[key].value) nextParams.set(key, form.elements[key].value);
+      const value = inputField(key)?.value;
+      if (value) nextParams.set(key, value);
     });
     const query = nextParams.toString();
     return query ? `${path}?${query}` : path;
   }
 
-  // ---------- Helpers ----------
   function stepEl(n) {
     return steps.find((s) => s.dataset.step === String(n));
   }
@@ -97,7 +109,6 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // ---------- Regras de checkboxes (exclusivas, "Outras", máx.) ----------
   form.addEventListener("change", (event) => {
     const input = event.target;
     if (!(input instanceof HTMLInputElement)) return;
@@ -140,7 +151,6 @@
     refreshNav();
   });
 
-  // ---------- Navegação ----------
   nextBtn?.addEventListener("click", () => {
     const step = stepEl(current);
     if (!isStepValid(step)) {
@@ -154,26 +164,33 @@
       return;
     }
 
-    // Última etapa: enviar ao Netlify via AJAX
+    // Última etapa: enviar ao webhook via AJAX
     nextBtn.setAttribute("aria-busy", "true");
     nextBtn.setAttribute("disabled", "");
     if (nextLabel) nextLabel.textContent = "Enviando...";
 
-    form.elements.qualified_at.value = new Date().toISOString();
+    const qualifiedAtField = inputField("qualified_at");
+    if (qualifiedAtField) qualifiedAtField.value = new Date().toISOString();
     const body = new URLSearchParams(new FormData(form)).toString();
     try {
       localStorage.setItem("bf_quiz_done", new Date().toISOString());
       localStorage.setItem("bf_quiz_pending", body);
-    } catch (_) {}
+    } catch (_) {
+      window.dispatchEvent(new CustomEvent("ratoeira:qualification_storage_failed"));
+    }
 
-    fetch("/", {
+    fetch(form.dataset.webhook || form.action, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body,
       keepalive: true,
     }).then((response) => {
       if (response.ok) {
-        try { localStorage.removeItem("bf_quiz_pending"); } catch (_) {}
+        try {
+          localStorage.removeItem("bf_quiz_pending");
+        } catch (_) {
+          window.dispatchEvent(new CustomEvent("ratoeira:qualification_storage_failed"));
+        }
       }
     }).catch(() => {
       window.dispatchEvent(new CustomEvent("ratoeira:qualification_delivery_failed"));

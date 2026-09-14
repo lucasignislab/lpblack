@@ -122,12 +122,14 @@ form?.addEventListener("submit", (event) => {
       leadId,
       utms
     }));
-  } catch (_) {}
+  } catch (_) {
+    trackEvent("lead_storage_unavailable");
+  }
 
-  // Tenta registrar o lead sem permitir que uma falha do endpoint interrompa o fluxo.
+  // Registra o lead sem permitir que uma falha do endpoint interrompa o fluxo.
   event.preventDefault();
 
-  fetch("/", {
+  fetch(form.dataset.webhook || form.action, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(new FormData(form)).toString(),

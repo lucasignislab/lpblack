@@ -43,5 +43,5 @@ http.createServer((req, res) => {
     res.end(data);
   });
 }).listen(port, host, () => {
-  console.log(`Preview em http://localhost:${port}/`);
+  process.stdout.write(`Preview em http://localhost:${port}/\n`);
 });
