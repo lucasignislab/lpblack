@@ -393,7 +393,8 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .brand--inverse { margin: 0; color: #fff; }
 .brand--inverse img { width: 56px; height: 38px; }
 .brand--inverse span { font-size: 1rem; }
-.footer p { margin: 0; color: #94949c; font-size: 0.8125rem; }
+.footer__legal { display: grid; max-width: 70ch; gap: 6px; text-align: right; }
+.footer__legal p, .footer__legal address { margin: 0; color: #94949c; font-size: 0.8125rem; font-style: normal; line-height: 1.45; }
 .mobile-cta { display: none; }
 
 @keyframes testimonial-marquee {
@@ -438,7 +439,8 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .testimonials__header > p { margin-top: 14px; text-align: left; }
   .testimonial-marquee::before, .testimonial-marquee::after { width: 24px; }
   .testimonial-card { flex-basis: min(92vw, 520px); }
-  .footer__inner { align-items: flex-start; flex-direction: column; justify-content: center; min-height: 150px; padding-bottom: 28px; }
+  .footer__inner { align-items: flex-start; flex-direction: column; justify-content: center; min-height: 150px; padding-block: 28px; }
+  .footer__legal { max-width: 100%; text-align: left; }
   .thanks__card > .brand { margin-bottom: 30px; }
   .mobile-cta { position: fixed; z-index: 20; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); left: 14px; display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: var(--radius-md); background: var(--brand-gold); color: var(--ink); box-shadow: 0 12px 34px rgba(10, 10, 10, 0.28); font-weight: 900; text-decoration: none; transition: opacity 180ms ease, transform 180ms ease; }
   .mobile-cta.is-hidden { opacity: 0; pointer-events: none; transform: translateY(18px); }
