@@ -381,7 +381,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .testimonial-marquee.is-ready .testimonial-track { animation: testimonial-marquee 90s linear infinite; }
 .testimonial-marquee:hover .testimonial-track, .testimonial-marquee:focus-within .testimonial-track { animation-play-state: paused; }
 .testimonial-marquee:focus-visible { outline: 3px solid rgba(255, 184, 0, 0.62); outline-offset: 6px; }
-.testimonial-set { display: flex; flex: none; min-width: 100vw; align-items: center; justify-content: center; gap: var(--testimonial-gap); }
+.testimonial-set { display: flex; flex: none; align-items: center; gap: var(--testimonial-gap); }
 .testimonial-card { position: relative; display: block; flex: 0 0 clamp(270px, 24vw, 360px); aspect-ratio: 937 / 1683; overflow: hidden; border: 1px solid #2f2f2f; border-radius: var(--radius-md); background: #121212; cursor: zoom-in; }
 .testimonial-card:hover { border-color: #5a5134; }
 .testimonial-card:focus-visible { outline: 3px solid var(--brand-gold); outline-offset: 4px; }
@@ -398,7 +398,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .mobile-cta { display: none; }
 
 @keyframes testimonial-marquee {
-  to { transform: translateX(calc(-50% - (var(--testimonial-gap) / 2))); }
+  to { transform: translateX(var(--testimonial-shift)); }
 }
 
 .thanks-page { min-height: 100vh; background-color: var(--cream); background-image: radial-gradient(circle, rgba(10, 10, 10, 0.085) 1px, transparent 1.1px); background-size: 40px 40px; }
@@ -438,7 +438,6 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .testimonials__header { display: block; margin-bottom: 30px; }
   .testimonials__header > p { margin-top: 14px; text-align: left; }
   .testimonial-marquee::before, .testimonial-marquee::after { width: 24px; }
-  .testimonial-set { min-width: auto; }
   .testimonial-card { flex-basis: min(78vw, 300px); }
   .footer__inner { align-items: flex-start; flex-direction: column; justify-content: center; min-height: 150px; padding-block: 28px; }
   .footer__legal { max-width: 100%; text-align: left; }
