@@ -305,7 +305,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .form-card h2 { margin: 26px 0 10px; font-size: clamp(2rem, 3.1vw, 2.5rem); font-weight: 900; line-height: 1.12; letter-spacing: -0.035em; }
 .form-card__intro { margin: 0 0 34px; color: var(--muted); font-size: 1rem; }
 .lead-form { display: grid; gap: 20px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-row { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 18px; }
 .field { display: grid; gap: 8px; }
 .field label { color: #596273; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.035em; text-transform: uppercase; }
 .field input, .field select {
@@ -451,6 +451,12 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .campaign-badge span { margin-top: 3px; }
   h1 { font-size: clamp(2.25rem, 11.7vw, 2.9rem); }
   .form-card__badge { border-radius: var(--radius-sm); }
+}
+
+@media (max-width: 340px) {
+  .phone-group { flex-direction: column; }
+  .phone-group__ddi select { width: 100%; height: 48px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .phone-group input { flex: none; height: 52px; }
 }
 
 @media (min-width: 1680px) {
