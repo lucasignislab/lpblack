@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="robots" content="noindex" />
-    <meta name="description" content="Responda 5 perguntas rápidas e concorra a um PIX de R$500 na live da Black Friday Ratoeira." />
+    <meta name="description" content="Responda 6 perguntas rápidas e concorra a um PIX de R$500 na live da Black Friday Ratoeira." />
     <title>Qualificação Black Friday | Ratoeira</title>
     <link rel="icon" href="assets/ratoeira-mark.png" />
     <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
@@ -31,7 +31,7 @@
             Ação da Black Friday
           </p>
           <h1>Responda em 1 minuto e concorra a um <em>PIX de R$500</em> na live</h1>
-          <p class="quali-sub">São apenas 5 perguntas rápidas. Suas respostas vão nos ajudar a preparar as melhores condições para a Black.</p>
+          <p class="quali-sub">São apenas 6 perguntas rápidas. Suas respostas vão nos ajudar a preparar as melhores condições para a Black.</p>
         </div>
 
         <div class="quiz" id="quiz">
@@ -42,9 +42,10 @@
               <button type="button" class="quiz__dot" data-goto="3" aria-label="Pergunta 3" disabled></button>
               <button type="button" class="quiz__dot" data-goto="4" aria-label="Pergunta 4" disabled></button>
               <button type="button" class="quiz__dot" data-goto="5" aria-label="Pergunta 5" disabled></button>
+              <button type="button" class="quiz__dot" data-goto="6" aria-label="Pergunta 6" disabled></button>
             </div>
             <div class="quiz__bar"><div class="quiz__bar-fill" id="quiz-bar-fill"></div></div>
-            <p class="quiz__count"><span id="quiz-current">1</span>/5</p>
+            <p class="quiz__count"><span id="quiz-current">1</span>/6</p>
           </div>
 
           <form id="quiz-form" name="black-friday-qualificacao" method="post" action="/obrigado.html" data-netlify="true" data-webhook="https://n8n.srv1145908.hstgr.cloud/webhook/black-friday-2026" netlify-honeypot="website" novalidate>
@@ -147,6 +148,16 @@
               <div class="quiz__other" id="wrap-objecoes_outro" hidden>
                 <label for="objecoes_outro">Conte em poucas palavras: <small>(opcional)</small></label>
                 <input type="text" id="objecoes_outro" name="objecoes_outro" placeholder="Escreva aqui..." />
+              </div>
+            </fieldset>
+
+            <!-- Pergunta 6 -->
+            <fieldset class="quiz__step" data-step="6" data-type="radio">
+              <legend>A Ratoeira está preparando um mega evento presencial em Campinas/SP no mês de abril/27, com as maiores mentes do mercado para você mudar seu jogo (e também teremos entrega de plaquinha). Qual seu nível de interesse em participar do evento?</legend>
+              <div class="quiz__options">
+                <label class="quiz-option"><input type="radio" name="interesse_evento" value="Não tenho interesse" /><span>Não tenho interesse</span></label>
+                <label class="quiz-option"><input type="radio" name="interesse_evento" value="Tenho interesse, mas depende do preço" /><span>Tenho interesse, mas depende do preço</span></label>
+                <label class="quiz-option"><input type="radio" name="interesse_evento" value="Tenho total interesse e participarei" /><span>Tenho total interesse e participarei</span></label>
               </div>
             </fieldset>
 
