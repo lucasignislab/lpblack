@@ -245,16 +245,31 @@
 
 /* ---------- Regras ---------- */
 .quali-rules {
-  margin: 34px 0 0;
-  text-align: center;
+  width: min(100%, 680px);
+  margin: 34px auto 0;
 }
-.quali-rules a {
+.quali-rules summary {
+  width: fit-content;
+  margin-inline: auto;
   color: var(--muted);
+  cursor: pointer;
   font-size: 0.75rem;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.quali-rules a:hover { color: var(--ink); }
+.quali-rules summary:hover, .quali-rules summary:focus-visible { color: var(--ink); }
+.quali-rules[open] summary { margin-bottom: 14px; color: var(--ink); }
+.quali-rules p {
+  margin: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.quali-rules strong { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   .quiz__step.is-active { animation: none; }
