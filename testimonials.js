@@ -4,8 +4,10 @@
   if (!bento || !cards.length) return;
 
   const pools = {
+    feature: [
+      { src: "assets/testimonial-feedback-fantasticos.webp", alt: "Cliente agradece a ajuda recebida e afirma que a equipe da Ratoeira é fantástica.", label: "Abrir o depoimento sobre o atendimento em tamanho completo" }
+    ],
     landscape: [
-      { src: "assets/testimonial-feedback-fantasticos.webp", alt: "Cliente agradece a ajuda recebida e afirma que a equipe da Ratoeira é fantástica.", label: "Abrir o depoimento sobre o atendimento em tamanho completo" },
       { src: "assets/testimonial-edson-suporte.webp", alt: "Edson elogia a atenção e a qualidade do suporte prestado pela equipe.", label: "Abrir o depoimento de Edson em tamanho completo" },
       { src: "assets/testimonial-luise-atendimento.webp", alt: "Cliente compara o atendimento da Ratoeira com outra ferramenta e dá nota máxima à equipe.", label: "Abrir o depoimento sobre o atendimento de Luise em tamanho completo" }
     ],
@@ -17,6 +19,7 @@
     ]
   };
 
+  const rotatingCards = cards.filter((card) => pools[card.dataset.testimonialPool].length > 1);
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let activeSlot = 0;
   let timerId;
@@ -31,11 +34,11 @@
     clearRotation();
     if (reduceMotion || isPaused || !isVisible || document.hidden) return;
     timerId = window.setTimeout(() => {
-      const card = cards[activeSlot];
-      activeSlot = (activeSlot + 1) % cards.length;
+      const card = rotatingCards[activeSlot];
+      activeSlot = (activeSlot + 1) % rotatingCards.length;
       swapCard(card);
       scheduleRotation();
-    }, 4000);
+    }, 3200);
   }
 
   function swapCard(card) {
