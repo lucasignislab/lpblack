@@ -4,10 +4,8 @@
   if (!bento || !cards.length) return;
 
   const pools = {
-    feature: [
-      { src: "assets/testimonial-feedback-fantasticos.webp", alt: "Cliente agradece a ajuda recebida e afirma que a equipe da Ratoeira é fantástica.", label: "Abrir o depoimento sobre o atendimento em tamanho completo" }
-    ],
     landscape: [
+      { src: "assets/testimonial-feedback-fantasticos.webp", alt: "Cliente agradece a ajuda recebida e afirma que a equipe da Ratoeira é fantástica.", label: "Abrir o depoimento sobre o atendimento em tamanho completo" },
       { src: "assets/testimonial-edson-suporte.webp", alt: "Edson elogia a atenção e a qualidade do suporte prestado pela equipe.", label: "Abrir o depoimento de Edson em tamanho completo" },
       { src: "assets/testimonial-luise-atendimento.webp", alt: "Cliente compara o atendimento da Ratoeira com outra ferramenta e dá nota máxima à equipe.", label: "Abrir o depoimento sobre o atendimento de Luise em tamanho completo" }
     ],
@@ -45,7 +43,14 @@
     if (card.dataset.swapping === "true") return;
 
     const pool = pools[card.dataset.testimonialPool];
-    const nextIndex = (Number(card.dataset.testimonialIndex) + 1) % pool.length;
+    const currentIndex = Number(card.dataset.testimonialIndex);
+    const occupiedSources = new Set(cards
+      .filter((otherCard) => otherCard !== card && otherCard.dataset.testimonialPool === card.dataset.testimonialPool)
+      .map((otherCard) => otherCard.getAttribute("href")));
+    let nextIndex = (currentIndex + 1) % pool.length;
+    while (occupiedSources.has(pool[nextIndex].src) && nextIndex !== currentIndex) {
+      nextIndex = (nextIndex + 1) % pool.length;
+    }
     const next = pool[nextIndex];
     const current = card.querySelector(".testimonial-card__image");
     const incoming = new Image();
