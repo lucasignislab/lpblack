@@ -5,13 +5,6 @@
 
   const pools = {
     landscape: [
-      { src: "assets/testimonial-francisco.jpeg", alt: "Francisco elogia a plataforma e o suporte após voltar a vender com a Ratoeira.", label: "Abrir o depoimento de Francisco em tamanho completo" },
-      { src: "assets/testimonial-antidio-souza.jpeg", alt: "Antídio Souza comenta que as configurações da Ratoeira são fáceis e rápidas de usar.", label: "Abrir o depoimento de Antídio Souza em tamanho completo" },
-      { src: "assets/testimonial-roberto-junior.jpeg", alt: "Roberto Junior recomenda a ferramenta da Ratoeira e deseja sucesso à equipe.", label: "Abrir o depoimento de Roberto Junior em tamanho completo" },
-      { src: "assets/testimonial-otair-oliveira.jpeg", alt: "Otair Oliveira relata que configurou a Ratoeira como ensinado e recebeu uma venda imediatamente.", label: "Abrir o depoimento de Otair Oliveira em tamanho completo" },
-      { src: "assets/testimonial-larissa-gomes.jpeg", alt: "Larissa Gomes recomenda a Ratoeira e relata conversões em campanhas internacionais.", label: "Abrir o depoimento de Larissa Gomes em tamanho completo" },
-      { src: "assets/testimonial-jaique.jpeg", alt: "Jaique comenta como foi fácil configurar notificações e scripts da Ratoeira.", label: "Abrir o depoimento de Jaique em tamanho completo" },
-      { src: "assets/testimonial-andre-campelo.jpeg", alt: "André Campelo agradece ao suporte da Ratoeira por esclarecer todas as dúvidas.", label: "Abrir o depoimento de André Campelo em tamanho completo" },
       { src: "assets/testimonial-feedback-fantasticos.webp", alt: "Cliente agradece a ajuda recebida e afirma que a equipe da Ratoeira é fantástica.", label: "Abrir o depoimento sobre o atendimento em tamanho completo" },
       { src: "assets/testimonial-edson-suporte.webp", alt: "Edson elogia a atenção e a qualidade do suporte prestado pela equipe.", label: "Abrir o depoimento de Edson em tamanho completo" },
       { src: "assets/testimonial-luise-atendimento.webp", alt: "Cliente compara o atendimento da Ratoeira com outra ferramenta e dá nota máxima à equipe.", label: "Abrir o depoimento sobre o atendimento de Luise em tamanho completo" }
