@@ -19,7 +19,6 @@
 
   const rotatingCards = cards.filter((card) => pools[card.dataset.testimonialPool].length > 1);
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let activeSlot = 0;
   let timerId;
   let isPaused = false;
   let isVisible = !("IntersectionObserver" in window);
@@ -32,27 +31,19 @@
     clearRotation();
     if (reduceMotion || isPaused || !isVisible || document.hidden) return;
     timerId = window.setTimeout(() => {
-      const card = rotatingCards[activeSlot];
-      activeSlot = (activeSlot + 1) % rotatingCards.length;
-      swapCard(card);
+      rotatingCards.forEach(swapCard);
       scheduleRotation();
-    }, 3200);
+    }, 2500);
   }
 
   function swapCard(card) {
     if (card.dataset.swapping === "true") return;
 
     const pool = pools[card.dataset.testimonialPool];
-    const currentIndex = Number(card.dataset.testimonialIndex);
-    const occupiedSources = new Set(cards
-      .filter((otherCard) => otherCard !== card && otherCard.dataset.testimonialPool === card.dataset.testimonialPool)
-      .map((otherCard) => otherCard.getAttribute("href")));
-    let nextIndex = (currentIndex + 1) % pool.length;
-    while (occupiedSources.has(pool[nextIndex].src) && nextIndex !== currentIndex) {
-      nextIndex = (nextIndex + 1) % pool.length;
-    }
+    const nextIndex = (Number(card.dataset.testimonialIndex) + 1) % pool.length;
     const next = pool[nextIndex];
     const current = card.querySelector(".testimonial-card__image");
+    const backdrop = card.querySelector(".testimonial-card__backdrop");
     const incoming = new Image();
 
     card.dataset.swapping = "true";
@@ -65,6 +56,7 @@
       window.requestAnimationFrame(() => {
         current.classList.add("is-leaving");
         incoming.classList.add("is-visible");
+        backdrop.src = next.src;
         card.href = next.src;
         card.setAttribute("aria-label", next.label);
         card.dataset.testimonialIndex = String(nextIndex);
