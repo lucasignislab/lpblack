@@ -1,12 +1,10 @@
 (function () {
-  const marquee = document.querySelector(".testimonial-marquee");
-  const track = marquee?.querySelector(".testimonial-track");
-  const sourceSet = track?.querySelector(".testimonial-set");
-  if (!marquee || !track || !sourceSet) return;
+  const marquees = Array.from(document.querySelectorAll(".testimonial-marquee"));
+  if (!marquees.length) return;
 
-  let frameId;
+  const frameIds = new Map();
 
-  function createClone() {
+  function createClone(sourceSet) {
     const clone = sourceSet.cloneNode(true);
     clone.dataset.testimonialClone = "true";
     clone.setAttribute("aria-hidden", "true");
@@ -14,7 +12,11 @@
     return clone;
   }
 
-  function rebuildTrack() {
+  function rebuildTrack(marquee) {
+    const track = marquee.querySelector(".testimonial-track");
+    const sourceSet = track?.querySelector(".testimonial-set:not([data-testimonial-clone])");
+    if (!track || !sourceSet) return;
+
     marquee.classList.remove("is-ready");
     track.querySelectorAll("[data-testimonial-clone]").forEach((clone) => clone.remove());
 
@@ -24,18 +26,20 @@
 
     const repeatCount = Math.ceil(marquee.clientWidth / (setWidth + gap)) + 2;
     for (let index = 1; index < repeatCount; index += 1) {
-      track.appendChild(createClone());
+      track.appendChild(createClone(sourceSet));
     }
 
-    track.style.setProperty("--testimonial-shift", `${-(setWidth + gap)}px`);
+    const shift = setWidth + gap;
+    track.style.setProperty("--testimonial-shift", `${-shift}px`);
+    track.style.setProperty("--testimonial-duration", `${Math.max(40, shift / 28)}s`);
     marquee.classList.add("is-ready");
   }
 
-  function scheduleRebuild() {
-    window.cancelAnimationFrame(frameId);
-    frameId = window.requestAnimationFrame(rebuildTrack);
+  function scheduleRebuild(marquee) {
+    window.cancelAnimationFrame(frameIds.get(marquee));
+    frameIds.set(marquee, window.requestAnimationFrame(() => rebuildTrack(marquee)));
   }
 
-  scheduleRebuild();
-  window.addEventListener("resize", scheduleRebuild, { passive: true });
+  marquees.forEach(scheduleRebuild);
+  window.addEventListener("resize", () => marquees.forEach(scheduleRebuild), { passive: true });
 })();
