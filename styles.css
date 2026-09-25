@@ -440,6 +440,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .form-row { grid-template-columns: 1fr; gap: 20px; }
   .testimonials { padding: 72px 0 76px; }
   .testimonials__header { display: block; margin-bottom: 30px; }
+  .testimonials h2 { text-align: center; }
   .testimonials__header > p { margin-top: 14px; text-align: left; }
   .testimonial-marquee::before, .testimonial-marquee::after { width: 24px; }
   .testimonial-marquee + .testimonial-marquee { margin-top: 16px; }
