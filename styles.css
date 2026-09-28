@@ -439,9 +439,11 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero .brand { position: static; display: flex; margin-bottom: 24px; }
   .hero .campaign-badge { max-width: 100%; }
   .hero__grid { grid-template-columns: 1fr; gap: 44px; padding-block: 32px 56px; }
-  .hero__copy { max-width: none; }
+  .hero__copy { max-width: none; text-align: center; }
+  .hero .brand, .hero .campaign-badge { margin-inline: auto; }
   .brand { margin-bottom: 30px; }
   h1 { max-width: none; margin-top: 22px; font-size: clamp(1.875rem, 8vw, 2.5rem); }
+  .hero__lead, .hero__description { margin-inline: auto; }
   .hero__description { max-width: 42ch; }
   .button--primary { width: 100%; }
   .video-card { width: min(100%, 420px); max-height: none; aspect-ratio: 4 / 3; justify-self: center; }
