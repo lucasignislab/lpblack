@@ -25,6 +25,7 @@
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  --space-xs: 8px;
   --space-lg: 24px;
   --space-xl: 28px;
   --shadow-card: 0 18px 48px rgba(255, 126, 74, 0.16), 0 6px 20px rgba(10, 10, 10, 0.06);
@@ -156,7 +157,7 @@ img, svg { display: block; }
   line-height: 1.25;
 }
 .campaign-badge { gap: 9px; padding: 9px 15px; }
-.campaign-badge span {
+.campaign-badge__dot {
   width: 9px;
   height: 9px;
   flex: 0 0 auto;
@@ -164,6 +165,7 @@ img, svg { display: block; }
   background: var(--brand-gold);
   box-shadow: 0 0 0 5px rgba(255, 184, 0, 0.1);
 }
+.campaign-badge__copy { display: inline-flex; gap: var(--space-xs); }
 h1, h2, p { text-wrap: pretty; }
 h1 {
   max-width: 13.5ch;
@@ -444,6 +446,9 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero .container { width: min(calc(100% - 40px), var(--container)); }
   .hero .brand { position: static; display: flex; margin-bottom: var(--space-lg); }
   .hero .campaign-badge { max-width: 100%; }
+  .campaign-badge__copy { display: grid; gap: 2px; text-align: center; }
+  .campaign-badge__copy > span:not(.campaign-badge__separator) { white-space: nowrap; }
+  .campaign-badge__separator { display: none; }
   .hero__grid { grid-template-columns: 1fr; gap: 44px; padding-block: 32px 56px; }
   .hero__copy { max-width: none; text-align: center; }
   .hero .brand, .hero .campaign-badge { margin-inline: auto; }
@@ -473,7 +478,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 
 @media (max-width: 420px) {
   .campaign-badge { align-items: flex-start; border-radius: var(--radius-sm); }
-  .campaign-badge span { margin-top: 3px; }
+  .campaign-badge__dot { margin-top: 5px; }
   h1 { font-size: 1.875rem; }
   .form-card__badge { border-radius: var(--radius-sm); }
 }
