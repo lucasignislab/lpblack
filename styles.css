@@ -25,6 +25,8 @@
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  --space-lg: 24px;
+  --space-xl: 28px;
   --shadow-card: 0 18px 48px rgba(255, 126, 74, 0.16), 0 6px 20px rgba(10, 10, 10, 0.06);
   --shadow-button: 0 10px 26px rgba(255, 151, 24, 0.28);
   --container: 1160px;
@@ -187,7 +189,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .hero .brand {
   position: absolute;
   z-index: 2;
-  top: 28px;
+  top: var(--space-lg);
   left: max(24px, calc((100% - var(--container)) / 2));
   margin-bottom: 0;
 }
@@ -426,6 +428,10 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   to { transform: translateX(var(--testimonial-shift)); }
 }
 
+@media (min-width: 761px) {
+  .hero .campaign-badge { margin-top: var(--space-xl); }
+}
+
 @media (max-width: 960px) {
   .hero { min-height: auto; }
   .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 48px; min-height: auto; padding-block: 56px 68px; }
@@ -436,7 +442,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 @media (max-width: 760px) {
   .container { width: min(calc(100% - 32px), var(--container)); }
   .hero .container { width: min(calc(100% - 40px), var(--container)); }
-  .hero .brand { position: static; display: flex; margin-bottom: 24px; }
+  .hero .brand { position: static; display: flex; margin-bottom: var(--space-lg); }
   .hero .campaign-badge { max-width: 100%; }
   .hero__grid { grid-template-columns: 1fr; gap: 44px; padding-block: 32px 56px; }
   .hero__copy { max-width: none; text-align: center; }
