@@ -181,6 +181,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   color: transparent;
 }
 .hero .brand { color: #fff; }
+.hero .brand span { font-family: "Inter Local", Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
 /* Logo fixado no topo esquerdo, alinhado à borda do container */
 .hero .brand {
   position: absolute;
