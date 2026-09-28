@@ -30,8 +30,11 @@
     }
 
     const shift = setWidth + gap;
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+    const pixelsPerSecond = isMobile ? 34 : 28;
+    const minimumDuration = isMobile ? 32 : 40;
     track.style.setProperty("--testimonial-shift", `${-shift}px`);
-    track.style.setProperty("--testimonial-duration", `${Math.max(40, shift / 28)}s`);
+    track.style.setProperty("--testimonial-duration", `${Math.max(minimumDuration, shift / pixelsPerSecond)}s`);
     marquee.classList.add("is-ready");
   }
 
