@@ -5,10 +5,12 @@
 }
 
 .quali-header {
+  display: flex;
+  justify-content: center;
   padding: 20px 0 0;
 }
 .quali-header .brand {
-  width: min(calc(100% - 32px), var(--container));
+  width: fit-content;
   margin-inline: auto;
   margin-bottom: 0;
   color: var(--ink);
