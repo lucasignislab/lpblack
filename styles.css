@@ -185,6 +185,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   background-clip: text;
   color: transparent;
 }
+.hero-title__line { display: inline; }
 .hero .brand { color: #fff; }
 .hero .brand span { font-family: "Inter Local", Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
 /* Logo fixado no topo esquerdo, alinhado à borda do container */
@@ -434,10 +435,15 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero .campaign-badge { margin-top: var(--space-xl); }
 }
 
-@media (max-width: 960px) {
+@media (min-width: 961px) {
+  .hero h1 { max-width: none; }
+  .hero-title__line { display: block; white-space: nowrap; }
+}
+
+@media (max-width: 1100px) {
   .hero { min-height: auto; }
   .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 48px; min-height: auto; padding-block: 56px 68px; }
-  h1 { font-size: clamp(2.65rem, 5.4vw, 3.7rem); }
+  h1 { font-size: clamp(3rem, 5vw, 3.7rem); }
   .video-card { max-height: 480px; }
 }
 
