@@ -107,7 +107,7 @@ form?.addEventListener("submit", (event) => {
   UTM_KEYS.forEach((key) => {
     if (utms[key]) qualificationParams.set(key, utms[key]);
   });
-  const qualificationUrl = new URL("/qualificacao.html", SITE_ORIGIN);
+  const qualificationUrl = new URL("/qualificacao", SITE_ORIGIN);
   qualificationUrl.search = qualificationParams.toString();
   trackEvent("lead_form_submit", {
     vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",

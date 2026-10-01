@@ -198,7 +198,7 @@
       window.dispatchEvent(new CustomEvent("ratoeira:qualification_delivery_failed"));
     });
 
-    window.location.assign(nextPageUrl("/obrigado.html"));
+    window.location.assign(nextPageUrl("/obrigado"));
   });
 
   prevBtn?.addEventListener("click", () => goTo(current - 1));
