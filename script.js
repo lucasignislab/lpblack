@@ -142,7 +142,18 @@ form?.addEventListener("submit", (event) => {
     })
     .catch(() => trackEvent("lead_form_delivery_failed", { status: "network_error" }));
 
-  window.location.assign(qualificationUrl.href);
+  (function () {
+    var url = qualificationUrl.href, redirected = false;
+    function redirect() {
+      if (!redirected) {
+        redirected = true;
+        window.location.assign(url);
+      }
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "redirect_ready", eventCallback: redirect, eventTimeout: 1500 });
+    setTimeout(redirect, 1600);
+  })();
 });
 
 if (stickyCta && offerSection && heroCta) {

@@ -198,7 +198,18 @@
       window.dispatchEvent(new CustomEvent("ratoeira:qualification_delivery_failed"));
     });
 
-    window.location.assign(nextPageUrl("/obrigado"));
+    (function () {
+      var url = nextPageUrl("/obrigado"), redirected = false;
+      function redirect() {
+        if (!redirected) {
+          redirected = true;
+          window.location.assign(url);
+        }
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "redirect_ready", eventCallback: redirect, eventTimeout: 1500 });
+      setTimeout(redirect, 1600);
+    })();
   });
 
   prevBtn?.addEventListener("click", () => goTo(current - 1));
