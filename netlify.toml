@@ -7,7 +7,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://n8n.srv1145908.hstgr.cloud; form-action 'self'; base-uri 'self'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self'; script-src 'self' 'sha256-gywJZ5OFwL1tgzA37zIMph7bxmnozalPMdS6etU0RBQ=' https://www.googletagmanager.com; connect-src 'self' https://n8n.srv1145908.hstgr.cloud https://www.googletagmanager.com https://*.google-analytics.com; frame-src https://www.googletagmanager.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'"
 
 [[headers]]
   for = "/assets/*"
