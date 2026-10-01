@@ -4,6 +4,7 @@ const ddiSelect = document.querySelector("#ddi");
 const stickyCta = document.querySelector(".mobile-cta");
 const offerSection = document.querySelector("#oferta");
 const heroCta = document.querySelector(".button--primary");
+const SITE_ORIGIN = "https://black-ratoeira.com.br";
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 function trackEvent(name, details = {}) {
@@ -106,7 +107,8 @@ form?.addEventListener("submit", (event) => {
   UTM_KEYS.forEach((key) => {
     if (utms[key]) qualificationParams.set(key, utms[key]);
   });
-  const qualificationUrl = `/qualificacao.html?${qualificationParams.toString()}`;
+  const qualificationUrl = new URL("/qualificacao.html", SITE_ORIGIN);
+  qualificationUrl.search = qualificationParams.toString();
   trackEvent("lead_form_submit", {
     vendas: vendas instanceof HTMLSelectElement ? vendas.value : "",
     ddi: ddiSelect?.value || "+55"
@@ -140,7 +142,7 @@ form?.addEventListener("submit", (event) => {
     })
     .catch(() => trackEvent("lead_form_delivery_failed", { status: "network_error" }));
 
-  window.location.assign(qualificationUrl);
+  window.location.assign(qualificationUrl.href);
 });
 
 if (stickyCta && offerSection && heroCta) {

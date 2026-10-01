@@ -12,6 +12,7 @@
   const nextBtn = document.getElementById("quiz-next");
   const nextLabel = nextBtn?.querySelector("span:first-child");
   const error = document.getElementById("quiz-error");
+  const SITE_ORIGIN = "https://black-ratoeira.com.br";
   const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
   function inputField(name) {
@@ -60,8 +61,9 @@
       const value = inputField(key)?.value;
       if (value) nextParams.set(key, value);
     });
-    const query = nextParams.toString();
-    return query ? `${path}?${query}` : path;
+    const url = new URL(path, SITE_ORIGIN);
+    url.search = nextParams.toString();
+    return url.href;
   }
 
   function stepEl(n) {
