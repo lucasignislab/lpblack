@@ -17,6 +17,7 @@
     <link rel="icon" href="assets/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <link rel="preload" href="assets/hero-video-poster.webp" as="image" type="image/webp" />
     <link rel="preload" href="assets/ratoeira-mark.png" as="image" />
     <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="styles.css?v=15" />
@@ -84,15 +85,11 @@
             <p class="hero__microcopy">Gratuito. O link da live vai só para quem estiver na lista.</p>
           </div>
 
-          <div class="video-card" aria-label="Vídeo sobre a garantia de trackeamento da Ratoeira">
-            <div class="video-card__pattern" aria-hidden="true"></div>
-            <div class="video-card__content">
-              <span class="play-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9 7.6v8.8L16 12 9 7.6Z" fill="currentColor" /></svg>
-              </span>
-              <strong>Por que a gente topou garantir trackeamento com dinheiro na mesa</strong>
-              <span>Eitor Guimarães, fundador da Ratoeira · 3 minutos</span>
-            </div>
+          <div class="video-card">
+            <video controls playsinline preload="metadata" poster="assets/hero-video-poster.webp" aria-label="Vídeo sobre a garantia de trackeamento da Ratoeira">
+              <source src="assets/hero-video.mp4" type="video/mp4" />
+              Seu navegador não suporta a reprodução deste vídeo.
+            </video>
           </div>
         </div>
       </section>

@@ -229,46 +229,15 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .video-card {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  aspect-ratio: 9 / 15.4;
-  max-height: 530px;
+  width: min(100%, 330px);
+  aspect-ratio: 9 / 16;
+  justify-self: end;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: #060606;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
-.video-card__pattern {
-  position: absolute;
-  inset: 0;
-  opacity: 0.26;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.22) 1px, transparent 1.1px);
-  background-size: 38px 38px;
-}
-.video-card__content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  color: #fff;
-  text-align: center;
-}
-.play-mark {
-  display: grid;
-  width: 68px;
-  height: 68px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand-orange), var(--brand-gold));
-  color: #fff;
-  place-items: center;
-  box-shadow: 0 10px 28px rgba(255, 126, 74, 0.38);
-}
-.play-mark svg { width: 30px; height: 30px; }
-.video-card__content strong { max-width: 28ch; margin-bottom: 9px; font-size: 1.125rem; line-height: 1.35; }
-.video-card__content > span:last-child { color: #a2a7b0; font-size: 0.875rem; line-height: 1.55; }
+.video-card video { display: block; width: 100%; height: 100%; background: #060606; object-fit: cover; }
 
 .offer {
   position: relative;
@@ -442,7 +411,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero { min-height: auto; }
   .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 48px; min-height: auto; padding-block: 56px 68px; }
   h1 { font-size: clamp(3rem, 5vw, 3.7rem); }
-  .video-card { max-height: 480px; }
+  .video-card { width: min(100%, 300px); }
 }
 
 @media (max-width: 760px) {
@@ -461,7 +430,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero__lead, .hero__description { margin-inline: auto; }
   .hero__description { max-width: 42ch; }
   .button--primary { width: 100%; }
-  .video-card { width: min(100%, 420px); max-height: none; aspect-ratio: 4 / 3; justify-self: center; }
+  .video-card { width: min(100%, 340px); aspect-ratio: 9 / 16; justify-self: center; }
   .offer { padding: 62px 16px 74px; }
   .form-card { padding: 28px 20px; }
   .form-row { grid-template-columns: 1fr; gap: 20px; }
