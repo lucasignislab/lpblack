@@ -1,9 +1,6 @@
 const form = document.querySelector(".lead-form");
 const phoneInput = document.querySelector("#whatsapp");
 const ddiSelect = document.querySelector("#ddi");
-const stickyCta = document.querySelector(".mobile-cta");
-const offerSection = document.querySelector("#oferta");
-const heroCta = document.querySelector(".button--primary");
 const SITE_ORIGIN = "https://black-ratoeira.com.br";
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
@@ -155,21 +152,6 @@ form?.addEventListener("submit", (event) => {
     setTimeout(redirect, 1600);
   })();
 });
-
-if (stickyCta && offerSection && heroCta) {
-  const visibility = { hero: true, offer: false };
-  const updateStickyCta = () => stickyCta.classList.toggle("is-hidden", visibility.hero || visibility.offer);
-  const heroObserver = new IntersectionObserver(([entry]) => {
-    visibility.hero = entry.isIntersecting;
-    updateStickyCta();
-  });
-  const offerObserver = new IntersectionObserver(([entry]) => {
-    visibility.offer = entry.isIntersecting;
-    updateStickyCta();
-  }, { threshold: 0.08 });
-  heroObserver.observe(heroCta);
-  offerObserver.observe(offerSection);
-}
 
 setUtmFields();
 trackEvent("page_view", { page: "black_friday" });
