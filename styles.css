@@ -229,7 +229,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
 .video-card {
   position: relative;
   overflow: hidden;
-  width: min(100%, 330px);
+  width: min(100%, 370px);
   aspect-ratio: 9 / 16;
   justify-self: end;
   border-radius: var(--radius-lg);
@@ -441,7 +441,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero { min-height: auto; }
   .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 48px; min-height: auto; padding-block: 56px 68px; }
   h1 { font-size: clamp(3rem, 5vw, 3.7rem); }
-  .video-card { width: min(100%, 300px); }
+  .video-card { width: min(100%, 320px); }
 }
 
 @media (max-width: 760px) {
@@ -460,7 +460,7 @@ h1 em { display: block; color: #d95700; font-style: normal; }
   .hero__lead, .hero__description { margin-inline: auto; }
   .hero__description { max-width: 42ch; }
   .button--primary { width: 100%; }
-  .video-card { width: min(100%, 340px); aspect-ratio: 9 / 16; justify-self: center; }
+  .video-card { width: min(100%, 360px); aspect-ratio: 9 / 16; justify-self: center; }
   .offer { padding: 62px 16px 74px; }
   .form-card { padding: 28px 20px; }
   .form-row { grid-template-columns: 1fr; gap: 20px; }
