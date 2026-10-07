@@ -23,3 +23,8 @@
   from = "/obrigado"
   to = "/obrigado.html"
   status = 200
+
+[[redirects]]
+  from = "/termo-garantia"
+  to = "/termo-garantia.html"
+  status = 200
