@@ -95,6 +95,11 @@ form?.addEventListener("submit", (event) => {
   form.querySelectorAll("[aria-invalid='true']").forEach((field) => field.removeAttribute("aria-invalid"));
   message?.classList.remove("is-visible");
 
+  // Android/Chrome às vezes preenche o honeypot com o e-mail do usuário; limpa se for o caso.
+  const hp = form.elements.namedItem("website");
+  const em = form.elements.namedItem("email");
+  if (hp && em && hp.value.trim().toLowerCase() === em.value.trim().toLowerCase()) hp.value = "";
+
   if (!form.checkValidity() || digits.length < minDigits) {
     event.preventDefault();
     if (digits.length < minDigits && phoneInput) {
@@ -125,6 +130,8 @@ form?.addEventListener("submit", (event) => {
   if (leadIdInput instanceof HTMLInputElement) leadIdInput.value = leadId;
   const utms = getFormUtms();
   const qualificationParams = new URLSearchParams({ lead_id: leadId });
+  qualificationParams.set("email", form.elements.namedItem("email")?.value || "");
+  qualificationParams.set("whatsapp", (ddiSelect?.value || "+55") + " " + (phoneInput?.value || ""));
   UTM_KEYS.forEach((key) => {
     if (utms[key]) qualificationParams.set(key, utms[key]);
   });

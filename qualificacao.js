@@ -49,6 +49,39 @@
       if (field) field.value = value || "";
     });
   }
+  // Dados vindos do link (guardados pelo script do <head>).
+  // Se o link trouxer e-mail, ele vale mais que o bf_lead.
+  const DDIS = ["598", "595", "351", "55", "54", "56", "57", "52", "51", "34", "44", "49", "33", "39", "1"];
+
+  function formatWhatsapp(v) {
+    const d = String(v || "").replace(/\D/g, "");
+    if (!d) return "";
+    if (d.length === 10 || d.length === 11) return "+55 " + d; // número brasileiro sem DDI
+    const ddi = DDIS.find((x) => d.startsWith(x));
+    return ddi ? "+" + ddi + " " + d.slice(ddi.length) : "+" + d;
+  }
+
+  let doLink = {};
+  try {
+    doLink = JSON.parse(sessionStorage.getItem("bf_lead_url") || "{}") || {};
+  } catch (_) {
+    doLink = {};
+  }
+
+  if (doLink.email) {
+    const viaLink = {
+      lead_email: String(doLink.email).trim().toLowerCase(),
+      lead_nome: String(doLink.nome || "").trim(),
+      lead_whatsapp: formatWhatsapp(doLink.whatsapp),
+      lead_vendas: String(doLink.vendas || "").trim(),
+    };
+
+    Object.entries(viaLink).forEach(([name, value]) => {
+      const field = inputField(name);
+      if (field) field.value = value; // limpa o que veio do bf_lead, para não misturar duas pessoas
+    });
+  }
+
   // Ordem de precedência: URL → lead salvo → UTMs persistidas na primeira visita (rt_utm).
   let storedUtms = {};
   try {

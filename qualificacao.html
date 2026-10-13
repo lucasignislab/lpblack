@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <!-- Captura dados do lead vindos do link e limpa a URL antes do GTM carregar -->
+    <script>
+    (function () {
+      try {
+        var u = new URL(location.href), p = u.searchParams, d = {}, achou = false;
+        ["email", "nome", "whatsapp", "vendas"].forEach(function (k) {
+          if (p.has(k)) { d[k] = p.get(k); p.delete(k); achou = true; }
+        });
+        if (achou) {
+          sessionStorage.setItem("bf_lead_url", JSON.stringify(d));
+          history.replaceState(null, "", u.pathname + (p.toString() ? "?" + p.toString() : "") + u.hash);
+        }
+      } catch (e) {}
+    })();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W9MQ5VQT');</script>
     <!-- End Google Tag Manager -->
@@ -17,7 +32,7 @@
     <link rel="preload" href="assets/inter-extra-bold.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="qualificacao.css?v=3" />
-    <script src="qualificacao.js?v=7" defer></script>
+    <script src="qualificacao.js?v=8" defer></script>
   </head>
   <body class="quali-page">
     <!-- Google Tag Manager (noscript) -->
@@ -59,7 +74,7 @@
 
           <form id="quiz-form" name="black-friday-qualificacao" method="post" action="https://black-ratoeira.com.br/obrigado" data-netlify="true" data-webhook="https://n8n.srv1145908.hstgr.cloud/webhook/black-friday-2026" netlify-honeypot="website" novalidate>
             <input type="hidden" name="form-name" value="black-friday-qualificacao" />
-            <p class="honeypot"><label>Não preencha este campo: <input name="website" autocomplete="off" /></label></p>
+            <p class="honeypot"><label>Não preencha este campo: <input name="website" autocomplete="off" tabindex="-1" /></label></p>
 
             <!-- Dados do lead vindos da página 1 (associação no CRM) -->
             <input type="hidden" name="lead_id" />
