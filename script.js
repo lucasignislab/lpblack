@@ -21,12 +21,36 @@ function formatPhone(value) {
 
 const isBrazil = () => !ddiSelect || ddiSelect.value === "+55";
 
+const UTM_STORAGE_KEY = "rt_utm";
+
+// Captura as UTMs na primeira visita e as persiste sem expiração.
+// Se a URL trouxer novas UTMs, elas sobrescrevem as guardadas (atribuição mais recente).
+function captureUtms() {
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = Object.fromEntries(UTM_KEYS.map((key) => [key, params.get(key) || ""]));
+  if (UTM_KEYS.some((key) => fromUrl[key])) {
+    try {
+      localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fromUrl));
+    } catch (_) {
+      trackEvent("utm_storage_unavailable");
+    }
+    return fromUrl;
+  }
+  try {
+    const stored = JSON.parse(localStorage.getItem(UTM_STORAGE_KEY) || "{}");
+    if (stored && typeof stored === "object") return stored;
+  } catch (_) {
+    trackEvent("utm_storage_unavailable");
+  }
+  return {};
+}
+
 function setUtmFields() {
   if (!form) return;
-  const params = new URLSearchParams(window.location.search);
+  const utms = captureUtms();
   UTM_KEYS.forEach((key) => {
     const input = form.elements.namedItem(key);
-    if (input instanceof HTMLInputElement) input.value = params.get(key) || "";
+    if (input instanceof HTMLInputElement) input.value = utms[key] || "";
   });
 }
 

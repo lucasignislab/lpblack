@@ -49,9 +49,17 @@
       if (field) field.value = value || "";
     });
   }
+  // Ordem de precedência: URL → lead salvo → UTMs persistidas na primeira visita (rt_utm).
+  let storedUtms = {};
+  try {
+    const parsed = JSON.parse(localStorage.getItem("rt_utm") || "{}");
+    if (parsed && typeof parsed === "object") storedUtms = parsed;
+  } catch (_) {
+    storedUtms = {};
+  }
   UTM_KEYS.forEach((key) => {
     const field = inputField(key);
-    if (field) field.value = params.get(key) || (matchesLead ? lead.utms?.[key] || "" : "");
+    if (field) field.value = params.get(key) || (matchesLead ? lead.utms?.[key] || "" : "") || storedUtms[key] || "";
   });
 
   function nextPageUrl(path) {
